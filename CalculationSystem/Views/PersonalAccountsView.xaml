@@ -73,7 +73,7 @@
             
         </Grid>
 
-        <DataGrid Name="personalAccountsDataGrid" Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" AutoGenerateColumns="False">
+        <DataGrid Name="personalAccountsDataGrid" Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" AutoGenerateColumns="False" ColumnWidth="Auto" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="WhiteSmoke">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Width="Auto" Header="Account Number"/>
                 <DataGridTextColumn Binding="{Binding Owner}" Width="Auto" Header="Owner/Payer"/>

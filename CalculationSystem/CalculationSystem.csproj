@@ -78,6 +78,10 @@
     <Compile Include="Migrations\202001281719098_House added-1.designer.cs">
       <DependentUpon>202001281719098_House added-1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001291526562_NullableCharValue.cs" />
+    <Compile Include="Migrations\202001291526562_NullableCharValue.designer.cs">
+      <DependentUpon>202001291526562_NullableCharValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\HousingRegistryViewModel.cs" />
     <Compile Include="ViewModels\PersonalAccountsViewModel.cs" />
     <Compile Include="Views\HousingRegistryView.xaml.cs">
@@ -85,6 +89,9 @@
     </Compile>
     <Compile Include="Views\PersonalAccountsView.xaml.cs">
       <DependentUpon>PersonalAccountsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditHouseWindow.xaml.cs">
+      <DependentUpon>EditHouseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\HouseAdditionWindow.xaml.cs">
       <DependentUpon>HouseAdditionWindow.xaml</DependentUpon>
@@ -108,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PersonalAccountsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditHouseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001281719098_House added-1.resx">
       <DependentUpon>202001281719098_House added-1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001291526562_NullableCharValue.resx">
+      <DependentUpon>202001291526562_NullableCharValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

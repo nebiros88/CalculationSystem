@@ -34,15 +34,23 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-                <StackPanel Orientation="Vertical" Height="25">
-                    <Button Content="Add new house" Width="90" Margin="10,0,0,0" Click="HouseAddition_Clicked" />
+            <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Margin="0,5">
+                <StackPanel Orientation="Horizontal" Height="25" Margin="0,5">
+                    <Button Content="Add new house" Width="90" Margin="10,0" Click="HouseAddition_Clicked" />
+                    <Button Content="Delete house" Width="90" Margin="10,0" Click="Delete_Clicked" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25" Margin="0,5">
+                    <Button Content="Edit house" Width="90" Margin="10,0" Click="EditHouse_Clicked" />
+                    
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25" Margin="0,5">
+                    <Button Content="Show/Refresh registry" Width="130" Margin="10,0" Click="ShowOrRefreshRegistry_Clicked" />
                 </StackPanel>
             </StackPanel>
 
         </Grid>
 
-        <DataGrid Name="housingRegistryDataGrid" Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" AutoGenerateColumns="False">
+        <DataGrid Name="housingRegistryDataGrid" Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" AutoGenerateColumns="False" ColumnWidth="Auto" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="WhiteSmoke">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Width="Auto" Header="House Id"/>
                 <DataGridTextColumn Binding="{Binding City}" Width="Auto" Header="City"/>
