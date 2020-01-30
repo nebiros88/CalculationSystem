@@ -40,5 +40,10 @@ namespace CalculationSystem
         {
             DataContext = new HousingRegistryViewModel();
         }
+
+        private void Exit_Clicked(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

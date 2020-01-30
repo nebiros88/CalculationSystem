@@ -32,6 +32,8 @@ namespace CalculationSystem.Windows
         public HouseAdditionWindow()
         {
             InitializeComponent();
+            WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            Owner = Application.Current.MainWindow;
             cbCity.ItemsSource = Cities;
             cbStreet.ItemsSource = Streets;
         }

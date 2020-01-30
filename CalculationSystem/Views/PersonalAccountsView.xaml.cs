@@ -39,7 +39,7 @@ namespace CalculationSystem.Views
             var dbContext = new CalculationSystemDbContext();
             if (String.IsNullOrEmpty(tbAccountId.Text) && String.IsNullOrEmpty(tbOwner.Text))
             {
-                personalAccountsDataGrid.ItemsSource = dbContext.Accounts.ToList();
+                personalAccountsDataGrid.ItemsSource = dbContext.Accounts.Include("House").ToList();
             }
             else
             {

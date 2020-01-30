@@ -6,6 +6,10 @@
              xmlns:local="clr-namespace:CalculationSystem.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Image x:Key="addAccountImage" Source="C:\Users\Korbut\Documents\BSUIR\Корбут\СВПП_Курсовая_Корбут_80331\CalculationSystem\CalculationSystem\Icons\PlusIcon.jpg" ></Image>
+        <Image x:Key="dellAccountImage" Source="C:\Users\Korbut\Documents\BSUIR\Корбут\СВПП_Курсовая_Корбут_80331\CalculationSystem\CalculationSystem\Icons\MinusIcon.jpg"></Image>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -46,6 +50,16 @@
                 <StackPanel Orientation="Horizontal" Height="25"  >
                     <Button Content="Find" Width="80" Margin="10,0,0,0" Click="ButtonFind_Click" />
                     <Button Content="Clear all" Width="80" Margin="10,0,5,0" Click="ButtonClear_Click"/>
+                    <Button Content="{StaticResource addAccountImage}" Width="25" Margin="10,0">
+                        <Button.ToolTip>
+                            <ToolTip>Create new account</ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Content="{StaticResource dellAccountImage}" Width="25">
+                        <Button.ToolTip>
+                            <ToolTip>Delete selected account</ToolTip>
+                        </Button.ToolTip>
+                    </Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
@@ -77,6 +91,11 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Width="Auto" Header="Account Number"/>
                 <DataGridTextColumn Binding="{Binding Owner}" Width="Auto" Header="Owner/Payer"/>
+                <DataGridTextColumn Binding="{Binding House.City}" Width="Auto" Header="City"/>
+                <DataGridTextColumn Binding="{Binding House.Street}" Width="Auto" Header="Street"/>
+                <DataGridTextColumn Binding="{Binding House.HouseNumber}" Width="Auto" Header="House number"/>
+                <DataGridTextColumn Binding="{Binding House.CaseNumber}" Width="Auto" Header="Case number"/>
+                <DataGridTextColumn Binding="{Binding ApartmentNumber}" Width="Auto" Header="Apartment number"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

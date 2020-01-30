@@ -43,7 +43,7 @@
                     <Button Content="Edit house" Width="90" Margin="10,0" Click="EditHouse_Clicked" />
                     
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Height="25" Margin="0,5">
+                <StackPanel Orientation="Horizontal" Height="25" Margin="0,40,0,5" >
                     <Button Content="Show/Refresh registry" Width="130" Margin="10,0" Click="ShowOrRefreshRegistry_Clicked" />
                 </StackPanel>
             </StackPanel>

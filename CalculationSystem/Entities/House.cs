@@ -18,5 +18,11 @@ namespace CalculationSystem.Entities
         public int HouseNumber { get; set; }
         public char? CaseNumber { get; set; }
         public double HeatingStandart { get; set; }
+
+        public virtual ICollection<Account> Accounts { get; set; }
+        public House()
+        {
+            Accounts = new List<Account>();
+        }
     }
 }

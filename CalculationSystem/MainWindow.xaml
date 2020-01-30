@@ -35,6 +35,12 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Menu Height="25" VerticalAlignment="Top" Grid.ColumnSpan="6">
+            <MenuItem Header="File">
+                <MenuItem Header="Log in"></MenuItem>
+                <MenuItem Header="Log out"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Exit" Click="Exit_Clicked" ></MenuItem>
+            </MenuItem>
             <MenuItem Header="Accounts">
                 <MenuItem Header="Personal accounts" Click="PersonalAccounts_Clicked" >
 

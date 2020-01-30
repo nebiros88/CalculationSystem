@@ -26,6 +26,7 @@ namespace CalculationSystem.Views
         public HousingRegistryView()
         {
             InitializeComponent();
+            
         }
 
         private void HouseAddition_Clicked(object sender, RoutedEventArgs e)
