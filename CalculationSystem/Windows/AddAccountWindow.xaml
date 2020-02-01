@@ -19,16 +19,32 @@
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical">
             <DockPanel  Height="25">
                 <TextBlock DockPanel.Dock="Left" Text="Owner" TextAlignment="Left" VerticalAlignment="Center" Width="45"/>
-                <TextBox DockPanel.Dock="Right" VerticalAlignment="Center" Width="200" TextAlignment="Center"/>
+                <TextBox Name="tbOwner" DockPanel.Dock="Right" VerticalAlignment="Center" Width="200" TextAlignment="Center"/>
             </DockPanel>
             <DockPanel Height="25">
                 <TextBlock DockPanel.Dock="Left" Text="Apartment number" TextAlignment="Left" VerticalAlignment="Center" Width="150"/>
-                <TextBox DockPanel.Dock="Right" VerticalAlignment="Center" TextAlignment="Center" Width="100"/>
+                <TextBox Name="tbApartmentNumber" DockPanel.Dock="Right" VerticalAlignment="Center" TextAlignment="Center" Width="100"/>
             </DockPanel>
             <DockPanel Height="25">
                 <TextBlock DockPanel.Dock="Left" Text="Living space" TextAlignment="Left" VerticalAlignment="Center" Width="150"/>
-                <TextBox  VerticalAlignment="Center"  TextAlignment="Center" Width="100" DockPanel.Dock="Right"/>
+                <TextBox Name="tbLivingSpace" VerticalAlignment="Center"  TextAlignment="Center" Width="100" DockPanel.Dock="Right"/>
             </DockPanel>
+            <GroupBox Header="Home selection" Padding="2">
+                <StackPanel Orientation="Vertical">
+                    <DockPanel Height="25">
+                        <TextBox Name="tbSelectedHome" DockPanel.Dock="Left" TextAlignment="Left" ></TextBox>
+                    </DockPanel>
+                    <StackPanel Orientation="Horizontal" Height="25" Margin="0,5" HorizontalAlignment="Center">
+                        <Button Content="Select home..." Name="btSelectHome" Width="90" Margin="10,0"></Button>
+                        <Button Content="Clear choiсe" Name="btClearSelectedHome" Width="90" Margin="10,0"></Button>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Height="25" HorizontalAlignment="Center">
+            <Button Content="Ok" Name="btOk" Width="90" Margin="10,0" Click="btOk_Clicked" ></Button>
+            <Button Content="Cancel" Name="btCancel" Width="90" Margin="10,0" Click="btCancel_Clicked"></Button>
         </StackPanel>
         
     </Grid>

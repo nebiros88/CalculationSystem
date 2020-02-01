@@ -25,5 +25,22 @@ namespace CalculationSystem.Windows
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
             Owner = Application.Current.MainWindow;
         }
+
+        private void btOk_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(tbOwner.Text) || String.IsNullOrEmpty(tbApartmentNumber.Text) || String.IsNullOrEmpty(tbLivingSpace.Text) || String.IsNullOrEmpty(tbSelectedHome.Text))
+            {
+                MessageBox.Show("Fill out all forms!");
+            }
+            else
+            {
+                DialogResult = true;
+            }
+        }
+
+        private void btCancel_Clicked(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+        }
     }
 }

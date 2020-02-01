@@ -1,0 +1,41 @@
+﻿<Window x:Class="CalculationSystem.Windows.HomeSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculationSystem.Windows"
+        mc:Ignorable="d"
+        Title="HomeSelectionWindow" Height="450" Width="800">
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.4*"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="???" Grid.Row="0" Grid.Column="0" Padding="5">
+            <StackPanel Orientation="Vertical" Height="25">
+                <TextBlock Text="Сhoose a house from registry of houses for linking to a personal account and press OK"></TextBlock>
+            </StackPanel>
+        </GroupBox>
+        <DataGrid Name="homeSelectionDataGrid" AutoGenerateColumns="False" ColumnWidth="Auto" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="WhiteSmoke" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            ">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Width="Auto" Header="House Id"/>
+                <DataGridTextColumn Binding="{Binding City}" Width="Auto" Header="City"/>
+                <DataGridTextColumn Binding="{Binding Street}" Width="Auto" Header="Street"/>
+                <DataGridTextColumn Binding="{Binding HouseNumber}" Width="Auto" Header="House Number"/>
+                <DataGridTextColumn Binding="{Binding CaseNumber}" Width="Auto" Header="Case Number"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Height="25" HorizontalAlignment="Center" >
+            <Button Content="Ok" Width="90" Margin="5,0"/>
+            <Button Content=" Cancel" Width="90" Margin="5,0"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>

@@ -104,6 +104,9 @@
     <Compile Include="Windows\EditHouseWindow.xaml.cs">
       <DependentUpon>EditHouseWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\HomeSelectionWindow.xaml.cs">
+      <DependentUpon>HomeSelectionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\HouseAdditionWindow.xaml.cs">
       <DependentUpon>HouseAdditionWindow.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\EditHouseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\HomeSelectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -50,7 +50,7 @@
                 <StackPanel Orientation="Horizontal" Height="25"  >
                     <Button Content="Find" Width="80" Margin="10,0,0,0" Click="ButtonFind_Click" />
                     <Button Content="Clear all" Width="80" Margin="10,0,5,0" Click="ButtonClear_Click"/>
-                    <Button Content="{StaticResource addAccountImage}" Width="25" Margin="10,0">
+                    <Button Name="btAddNewAccount" Content="{StaticResource addAccountImage}" Width="25" Margin="10,0" Click="AddNewAccount_Clicked" >
                         <Button.ToolTip>
                             <ToolTip>Create new account</ToolTip>
                         </Button.ToolTip>

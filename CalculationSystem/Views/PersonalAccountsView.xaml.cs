@@ -1,5 +1,6 @@
 ﻿using CalculationSystem.Db;
 using CalculationSystem.Entities;
+using CalculationSystem.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -87,6 +88,37 @@ namespace CalculationSystem.Views
             tbHouseNumber.Clear();
             tbCaseNumber.Clear();
             tbApartmentNumber.Clear();
+        }
+
+        private void AddNewAccount_Clicked(object sender, RoutedEventArgs e)
+        {
+            AddAccountWindow newAccountWindow = new AddAccountWindow();
+            var result = newAccountWindow.ShowDialog();
+            if (result == false)
+            {
+                newAccountWindow.Close();
+            }
+            else
+            {
+                try
+                {
+                    using (var dbContext = new CalculationSystemDbContext())
+                    {
+                        Account newAccount = new Account();
+                        newAccount.Owner = newAccountWindow.tbOwner.Text;
+                        newAccount.LivingSpace = double.Parse(newAccountWindow.tbLivingSpace.Text);
+                        newAccount.HouseId = int.Parse(newAccountWindow.tbSelectedHome.Text);
+                        newAccount.ApartmentNumber = int.Parse(newAccountWindow.tbApartmentNumber.Text);
+                        dbContext.Accounts.Add(newAccount);
+                        dbContext.SaveChanges();
+                        MessageBox.Show("New presonal account created successfully");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Impossible! Reason: -{ex.Message}");
+                }
+            }
         }
     }
 }
