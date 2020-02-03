@@ -1,4 +1,5 @@
 ﻿using CalculationSystem.Db;
+using CalculationSystem.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,15 +21,35 @@ namespace CalculationSystem.Windows
     /// </summary>
     public partial class HomeSelectionWindow : Window
     {
+       
+
         public HomeSelectionWindow()
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
             Owner = Application.Current.MainWindow;
 
-            using (var dbContext = new CalculationSystemDbContext())
+            using (var newDbContext = new CalculationSystemDbContext())
             {
-                homeSelectionDataGrid.ItemsSource = dbContext.Houses.ToList();
+                homeSelectionDataGrid.ItemsSource = newDbContext.Houses.ToList();
+            }
+        }
+
+        private void Cancel_Clicked(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+        }
+
+        private void Ok_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (homeSelectionDataGrid.SelectedIndex > -1)
+            {
+                AddAccountWindow.selectedHouse = homeSelectionDataGrid.SelectedItem as House;
+                DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Select home from registry before press Ok button");
             }
         }
     }

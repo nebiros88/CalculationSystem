@@ -55,7 +55,7 @@
                             <ToolTip>Create new account</ToolTip>
                         </Button.ToolTip>
                     </Button>
-                    <Button Content="{StaticResource dellAccountImage}" Width="25">
+                    <Button Name="tbDeleteSelectedAccount" Content="{StaticResource dellAccountImage}" Width="25">
                         <Button.ToolTip>
                             <ToolTip>Delete selected account</ToolTip>
                         </Button.ToolTip>

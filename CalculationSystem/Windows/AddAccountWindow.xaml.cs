@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalculationSystem.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace CalculationSystem.Windows
     /// </summary>
     public partial class AddAccountWindow : Window
     {
+        public static House selectedHouse = new House();
+
         public AddAccountWindow()
         {
             InitializeComponent();
@@ -41,6 +44,20 @@ namespace CalculationSystem.Windows
         private void btCancel_Clicked(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void SelectHome_Clicked(object sender, RoutedEventArgs e)
+        {
+            HomeSelectionWindow selectHomeWindow = new HomeSelectionWindow();
+            var result = selectHomeWindow.ShowDialog();
+            if (result == false)
+            {
+                selectHomeWindow.Close();
+            }
+            else
+            {
+                tbSelectedHome.Text = selectedHouse.Id + "." + selectedHouse.City + " str." + selectedHouse.Street + ". " + selectedHouse.HouseNumber + " case -" + selectedHouse.CaseNumber;
+            }
         }
     }
 }

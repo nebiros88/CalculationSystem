@@ -33,8 +33,8 @@
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Height="25" HorizontalAlignment="Center" >
-            <Button Content="Ok" Width="90" Margin="5,0"/>
-            <Button Content=" Cancel" Width="90" Margin="5,0"/>
+            <Button Content="Ok" Width="90" Margin="5,0" Click="Ok_Clicked"/>
+            <Button Content=" Cancel" Width="90" Margin="5,0" Click="Cancel_Clicked" />
         </StackPanel>
         
     </Grid>
