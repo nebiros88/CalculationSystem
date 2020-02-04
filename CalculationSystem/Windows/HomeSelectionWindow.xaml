@@ -23,7 +23,6 @@
             </StackPanel>
         </GroupBox>
         <DataGrid Name="homeSelectionDataGrid" AutoGenerateColumns="False" ColumnWidth="Auto" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="WhiteSmoke" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-            ">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Width="Auto" Header="House Id"/>
                 <DataGridTextColumn Binding="{Binding City}" Width="Auto" Header="City"/>

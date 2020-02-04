@@ -59,5 +59,10 @@ namespace CalculationSystem.Windows
                 tbSelectedHome.Text = selectedHouse.Id + "." + selectedHouse.City + " str." + selectedHouse.Street + ". " + selectedHouse.HouseNumber + " case -" + selectedHouse.CaseNumber;
             }
         }
+
+        private void ClearChoice_Clicked(object sender, RoutedEventArgs e)
+        {
+            tbSelectedHome.Clear();
+        }
     }
 }

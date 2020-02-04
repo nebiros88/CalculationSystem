@@ -36,7 +36,7 @@
                     </DockPanel>
                     <StackPanel Orientation="Horizontal" Height="25" Margin="0,5" HorizontalAlignment="Center">
                         <Button Content="Select home..." Name="btSelectHome" Width="90" Margin="10,0" Click="SelectHome_Clicked" ></Button>
-                        <Button Content="Clear choiсe" Name="btClearSelectedHome" Width="90" Margin="10,0"></Button>
+                        <Button Content="Clear choiсe" Name="btClearSelectedHome" Width="90" Margin="10,0" Click="ClearChoice_Clicked" ></Button>
                     </StackPanel>
                 </StackPanel>
             </GroupBox>

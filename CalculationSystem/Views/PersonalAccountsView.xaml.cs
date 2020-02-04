@@ -107,16 +107,41 @@ namespace CalculationSystem.Views
                         Account newAccount = new Account();
                         newAccount.Owner = newAccountWindow.tbOwner.Text;
                         newAccount.LivingSpace = double.Parse(newAccountWindow.tbLivingSpace.Text);
-                        newAccount.HouseId = int.Parse(newAccountWindow.tbSelectedHome.Text);
+                        newAccount.HouseId = AddAccountWindow.selectedHouse.Id;
                         newAccount.ApartmentNumber = int.Parse(newAccountWindow.tbApartmentNumber.Text);
                         dbContext.Accounts.Add(newAccount);
                         dbContext.SaveChanges();
-                        MessageBox.Show("New presonal account created successfully");
+                        MessageBox.Show("New personal account created successfully");
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Impossible! Reason: -{ex.Message}");
+                }
+            }
+        }
+
+        private void DeleteSelectedAccount_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (personalAccountsDataGrid.SelectedIndex > -1)
+            {
+                var result = MessageBox.Show("Are you sure?", "Delete this account?", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        using (var dbContext = new CalculationSystemDbContext())
+                        {
+                            Account delAccount = personalAccountsDataGrid.SelectedItem as Account;
+                            dbContext.Accounts.Remove(dbContext.Accounts.Single(h => h.Id == delAccount.Id));
+                            dbContext.SaveChanges();
+                            MessageBox.Show("Selected house was deleted!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Impossible? Reason -{ex.Message}");
+                    }
                 }
             }
         }
