@@ -145,5 +145,55 @@ namespace CalculationSystem.Views
                 }
             }
         }
+
+        private void EditAccount_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (personalAccountsDataGrid.SelectedIndex > -1)
+            {
+                EditAccountWindow newEditAccountWindow = new EditAccountWindow();
+                Account editAccount = personalAccountsDataGrid.SelectedItem as Account;
+                newEditAccountWindow.tbOwner.Text = editAccount.Owner;
+                newEditAccountWindow.tbApartmentNumber.Text = editAccount.ApartmentNumber.ToString();
+                newEditAccountWindow.tbLivingSpace.Text = editAccount.LivingSpace.ToString();
+                var result = newEditAccountWindow.ShowDialog();
+                if (result == false)
+                {
+                    newEditAccountWindow.Close();
+                }
+                else
+                {
+                    try
+                    {
+                        using (var dbContext = new CalculationSystemDbContext())
+                        {
+                            Account account = dbContext.Accounts.Single(x => x.Id == editAccount.Id);
+                            account.Owner = newEditAccountWindow.tbOwner.Text;
+                            account.ApartmentNumber = int.Parse(newEditAccountWindow.tbApartmentNumber.Text);
+                            account.LivingSpace = double.Parse(newEditAccountWindow.tbLivingSpace.Text);
+                            dbContext.SaveChanges();
+                            UpdateAccountsTable();
+                            MessageBox.Show("House edited");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Impossible! Reason: -{ex.Message}");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select account before");
+            }
+
+        }
+
+        public void UpdateAccountsTable()
+        {
+            using (var dbContext = new CalculationSystemDbContext())
+            {
+                personalAccountsDataGrid.ItemsSource = dbContext.Accounts.Include("House").ToList();
+            }
+        }
     }
 }

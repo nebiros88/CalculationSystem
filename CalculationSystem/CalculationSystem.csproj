@@ -101,6 +101,9 @@
     <Compile Include="Windows\AddAccountWindow.xaml.cs">
       <DependentUpon>AddAccountWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\EditAccountWindow.xaml.cs">
+      <DependentUpon>EditAccountWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\EditHouseWindow.xaml.cs">
       <DependentUpon>EditHouseWindow.xaml</DependentUpon>
     </Compile>
@@ -133,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\AddAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditAccountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
