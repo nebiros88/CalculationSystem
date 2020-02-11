@@ -66,6 +66,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Entities\House.cs" />
+    <Compile Include="Entities\Price.cs" />
+    <Compile Include="Entities\Service.cs" />
     <Compile Include="Migrations\202001100315424_Owner was added to Account.cs" />
     <Compile Include="Migrations\202001100315424_Owner was added to Account.designer.cs">
       <DependentUpon>202001100315424_Owner was added to Account.cs</DependentUpon>
@@ -89,6 +91,10 @@
     <Compile Include="Migrations\202001301933369_LivingSpaceAddInAccount.cs" />
     <Compile Include="Migrations\202001301933369_LivingSpaceAddInAccount.designer.cs">
       <DependentUpon>202001301933369_LivingSpaceAddInAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002112011266_Price_Service_Account_Relationship.cs" />
+    <Compile Include="Migrations\202002112011266_Price_Service_Account_Relationship.designer.cs">
+      <DependentUpon>202002112011266_Price_Service_Account_Relationship.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\HousingRegistryViewModel.cs" />
     <Compile Include="ViewModels\PersonalAccountsViewModel.cs" />
@@ -195,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001301933369_LivingSpaceAddInAccount.resx">
       <DependentUpon>202001301933369_LivingSpaceAddInAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002112011266_Price_Service_Account_Relationship.resx">
+      <DependentUpon>202002112011266_Price_Service_Account_Relationship.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
