@@ -13,8 +13,16 @@ namespace CalculationSystem.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Name { get; set; }
-        
+        public string Name { get; set; }    // наименование услуги   
+        public string Units { get; set; }   // единицы измерения
+        public Price FirstPrice
+        {
+            get
+            {
+                return Prices.First();
+            }
+        }
+
         public virtual ICollection<Price> Prices { get; set; }
 
         public Service()

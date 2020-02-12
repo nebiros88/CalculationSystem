@@ -47,22 +47,36 @@
                     <TextBlock Text="Owner" TextAlignment="Right" Margin="5,0,0,0" Width="100" VerticalAlignment="Center"/>
                     <TextBox Name="tbOwner" Width="150" Margin="10,0" VerticalAlignment="Center"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Height="25"  >
+                <StackPanel Orientation="Horizontal" Height="25" >
                     <Button Content="Find" Width="60" Margin="10,0,0,0" Click="ButtonFind_Click" />
                     <Button Content="Clear all" Width="60" Margin="10,0,5,0" Click="ButtonClear_Click"/>
                     <Button Content="Edit" Width="40" Margin="5,0" Click="EditAccount_Clicked"></Button>
                     <Button Name="btAddNewAccount" Content="{StaticResource addAccountImage}" Width="25" Margin="10,0" Click="AddNewAccount_Clicked" >
                         <Button.ToolTip>
-                            <ToolTip>Create new account</ToolTip>
+                            <ToolTip ToolTipService.ShowDuration="5000" ToolTipService.InitialShowDelay="2000">
+                                Create new account
+                            </ToolTip>
                         </Button.ToolTip>
                     </Button>
                     <Button Name="tbDeleteSelectedAccount" Content="{StaticResource dellAccountImage}" Width="25" Click="DeleteSelectedAccount_Clicked">
                         <Button.ToolTip>
-                            <ToolTip>Delete selected account</ToolTip>
+                            <ToolTip ToolTipService.ShowDuration="5000" ToolTipService.InitialShowDelay="2000">
+                                Delete selected account
+                            </ToolTip>
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25" Margin="0,5">
+                    <Button Name="btGoToAccount" Content="Go to account" Width="80" Margin="10,0" Click="btGoToAccount_Clicked" >
+                        <Button.ToolTip>
+                            <ToolTip ToolTipService.ShowDuration="5000" ToolTipService.InitialShowDelay="2000">
+                                Go to the accounts' services
+                            </ToolTip>
                         </Button.ToolTip>
                     </Button>
                 </StackPanel>
             </StackPanel>
+            
             <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Height="25" >
                     <TextBlock Text="City"   TextAlignment="Right" Margin="5,0,0,0" Width="100" VerticalAlignment="Center"/>

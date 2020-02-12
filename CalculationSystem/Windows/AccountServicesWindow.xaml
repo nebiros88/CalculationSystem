@@ -1,0 +1,52 @@
+﻿<Window x:Class="CalculationSystem.Windows.AccountServicesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculationSystem.Windows"    
+        mc:Ignorable="d"
+        Title="AccountServicesWindow" Height="450" Width="800">
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.4*"/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Account info" Grid.Row="0" Grid.Column="0" Padding="2">
+            <StackPanel Orientation="Vertical" Height="Auto">
+                <StackPanel Orientation="Horizontal" Height="25" Margin="0,1">
+                    <TextBlock Text="Owner" TextAlignment="Left" VerticalAlignment="Center" Width="Auto"/>
+                    <TextBlock Name="tbOwner" TextAlignment="Left" VerticalAlignment="Center" Width="300" Margin="10,0,0,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25" Margin="0,1">
+                    <TextBlock Text="Address" TextAlignment="Left" VerticalAlignment="Center" Width="Auto"/>
+                    <TextBlock Name="tbAdress" TextAlignment="Left" VerticalAlignment="Center" Width="300" Margin="10,0,0,0" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25" Margin="0,1">
+                    <TextBlock Text="Living space" TextAlignment="Left" VerticalAlignment="Center" Width="Auto"/>
+                    <TextBlock Name="tbLivingSpace" TextAlignment="Left" VerticalAlignment="Center" Width="50" Margin="10,0,0,0" />
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <DataGrid Name="accountServicesDataGrid" AutoGenerateColumns="False" ColumnWidth="Auto" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="WhiteSmoke" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="columnServiceId" Binding="{Binding ServiceId}" Width="Auto" Header="Service Id" />
+                <DataGridTextColumn x:Name="columnServiceName" Binding="{Binding ServiceName}" Width="Auto" Header="Service name"/>
+                <DataGridTextColumn x:Name="columnServiceRate" Binding="{Binding ServiceRate}" Width="Auto" Header="Rate (RUB)"/>
+                <DataGridTextColumn x:Name="columnQuantity" Binding="{Binding ServiceQuantity}" Width="Auto" Header="Quantity"/>
+                <DataGridTextColumn x:Name="columnServiceUnits" Binding="{Binding ServiceUnits}" Width="Auto" Header="Units"/>
+                <DataGridTextColumn x:Name="columnTotal" Binding="{Binding Total}" Width="Auto" Header="Total (RUB)"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" Height="25" HorizontalAlignment="Center" >
+            <Button Name="btCalculate" Content="Calculate" Width="90" Margin="5,0" Click="btCalculate_Clicked" />
+            <Button Content="Close" Width="90" Margin="5,0" Click="Close_Clicked" />
+        </StackPanel>
+
+    </Grid>
+</Window>

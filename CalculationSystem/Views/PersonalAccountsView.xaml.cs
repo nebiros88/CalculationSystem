@@ -172,7 +172,7 @@ namespace CalculationSystem.Views
                             account.LivingSpace = double.Parse(newEditAccountWindow.tbLivingSpace.Text);
                             dbContext.SaveChanges();
                             UpdateAccountsTable();
-                            MessageBox.Show("House edited");
+                            MessageBox.Show("Account edited");
                         }
                     }
                     catch (Exception ex)
@@ -185,7 +185,6 @@ namespace CalculationSystem.Views
             {
                 MessageBox.Show("Select account before");
             }
-
         }
 
         public void UpdateAccountsTable()
@@ -193,6 +192,32 @@ namespace CalculationSystem.Views
             using (var dbContext = new CalculationSystemDbContext())
             {
                 personalAccountsDataGrid.ItemsSource = dbContext.Accounts.Include("House").ToList();
+            }
+        }
+
+        private void btGoToAccount_Clicked(object sender, RoutedEventArgs e)
+        {
+            if (personalAccountsDataGrid.SelectedIndex > -1)
+            {
+                using (var dbContext = new CalculationSystemDbContext())
+                {
+                    Account account = personalAccountsDataGrid.SelectedItem as Account;
+                    AccountServicesWindow accountServicesWindow = new AccountServicesWindow(account);
+                    var result = accountServicesWindow.ShowDialog();
+                    if (result == false)
+                    {
+                        accountServicesWindow.Close();
+                    }
+                    else
+                    {
+
+                    }
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("Select account before");
             }
         }
     }

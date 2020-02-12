@@ -18,5 +18,7 @@ namespace CalculationSystem.Db
 
         public DbSet<Account> Accounts { get; set; }
         public DbSet<House> Houses { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Price> Prices { get; set; }
     }
 }

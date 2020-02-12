@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Entities\Calculation.cs" />
     <Compile Include="Entities\House.cs" />
     <Compile Include="Entities\Price.cs" />
     <Compile Include="Entities\Service.cs" />
@@ -96,6 +97,10 @@
     <Compile Include="Migrations\202002112011266_Price_Service_Account_Relationship.designer.cs">
       <DependentUpon>202002112011266_Price_Service_Account_Relationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002121935230_AddUnitsToServiceClass.cs" />
+    <Compile Include="Migrations\202002121935230_AddUnitsToServiceClass.designer.cs">
+      <DependentUpon>202002121935230_AddUnitsToServiceClass.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\HousingRegistryViewModel.cs" />
     <Compile Include="ViewModels\PersonalAccountsViewModel.cs" />
     <Compile Include="Views\HousingRegistryView.xaml.cs">
@@ -103,6 +108,9 @@
     </Compile>
     <Compile Include="Views\PersonalAccountsView.xaml.cs">
       <DependentUpon>PersonalAccountsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AccountServicesWindow.xaml.cs">
+      <DependentUpon>AccountServicesWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AddAccountWindow.xaml.cs">
       <DependentUpon>AddAccountWindow.xaml</DependentUpon>
@@ -138,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PersonalAccountsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AccountServicesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002112011266_Price_Service_Account_Relationship.resx">
       <DependentUpon>202002112011266_Price_Service_Account_Relationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002121935230_AddUnitsToServiceClass.resx">
+      <DependentUpon>202002121935230_AddUnitsToServiceClass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
