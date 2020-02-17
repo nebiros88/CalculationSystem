@@ -23,5 +23,6 @@ namespace CalculationSystem.Entities
         public House House { get; set; }
 
         public virtual ICollection<Service> Services { get; set; }
+
     }
 }

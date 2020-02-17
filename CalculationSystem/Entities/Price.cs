@@ -19,6 +19,5 @@ namespace CalculationSystem.Entities
         [ForeignKey("ServiceId")]
         public Service Service { get; set; }
 
-      
     }
 }
