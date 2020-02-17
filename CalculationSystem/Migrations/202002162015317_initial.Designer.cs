@@ -7,13 +7,13 @@ namespace CalculationSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class renameAccountNumberTable : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(renameAccountNumberTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202001061402459_renameAccountNumberTable"; }
+            get { return "202002162015317_initial"; }
         }
         
         string IMigrationMetadata.Source

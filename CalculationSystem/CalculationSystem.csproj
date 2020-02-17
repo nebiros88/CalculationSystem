@@ -69,38 +69,11 @@
     <Compile Include="Entities\House.cs" />
     <Compile Include="Entities\Price.cs" />
     <Compile Include="Entities\Service.cs" />
-    <Compile Include="Migrations\202001100315424_Owner was added to Account.cs" />
-    <Compile Include="Migrations\202001100315424_Owner was added to Account.designer.cs">
-      <DependentUpon>202001100315424_Owner was added to Account.cs</DependentUpon>
+    <Compile Include="Migrations\202002162015317_initial.cs" />
+    <Compile Include="Migrations\202002162015317_initial.designer.cs">
+      <DependentUpon>202002162015317_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202001281715162_House added.cs" />
-    <Compile Include="Migrations\202001281715162_House added.designer.cs">
-      <DependentUpon>202001281715162_House added.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001281719098_House added-1.cs" />
-    <Compile Include="Migrations\202001281719098_House added-1.designer.cs">
-      <DependentUpon>202001281719098_House added-1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001291526562_NullableCharValue.cs" />
-    <Compile Include="Migrations\202001291526562_NullableCharValue.designer.cs">
-      <DependentUpon>202001291526562_NullableCharValue.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001301727388_connectAccountToHouse.cs" />
-    <Compile Include="Migrations\202001301727388_connectAccountToHouse.designer.cs">
-      <DependentUpon>202001301727388_connectAccountToHouse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202001301933369_LivingSpaceAddInAccount.cs" />
-    <Compile Include="Migrations\202001301933369_LivingSpaceAddInAccount.designer.cs">
-      <DependentUpon>202001301933369_LivingSpaceAddInAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002112011266_Price_Service_Account_Relationship.cs" />
-    <Compile Include="Migrations\202002112011266_Price_Service_Account_Relationship.designer.cs">
-      <DependentUpon>202002112011266_Price_Service_Account_Relationship.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202002121935230_AddUnitsToServiceClass.cs" />
-    <Compile Include="Migrations\202002121935230_AddUnitsToServiceClass.designer.cs">
-      <DependentUpon>202002121935230_AddUnitsToServiceClass.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\HousingRegistryViewModel.cs" />
     <Compile Include="ViewModels\PersonalAccountsViewModel.cs" />
     <Compile Include="Views\HousingRegistryView.xaml.cs">
@@ -175,11 +148,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202001061402459_renameAccountNumberTable.cs" />
-    <Compile Include="Migrations\202001061402459_renameAccountNumberTable.designer.cs">
-      <DependentUpon>202001061402459_renameAccountNumberTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -193,37 +161,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202001061402459_renameAccountNumberTable.resx">
-      <DependentUpon>202001061402459_renameAccountNumberTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001100315424_Owner was added to Account.resx">
-      <DependentUpon>202001100315424_Owner was added to Account.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001281715162_House added.resx">
-      <DependentUpon>202001281715162_House added.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001281719098_House added-1.resx">
-      <DependentUpon>202001281719098_House added-1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001291526562_NullableCharValue.resx">
-      <DependentUpon>202001291526562_NullableCharValue.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001301727388_connectAccountToHouse.resx">
-      <DependentUpon>202001301727388_connectAccountToHouse.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202001301933369_LivingSpaceAddInAccount.resx">
-      <DependentUpon>202001301933369_LivingSpaceAddInAccount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002112011266_Price_Service_Account_Relationship.resx">
-      <DependentUpon>202002112011266_Price_Service_Account_Relationship.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202002121935230_AddUnitsToServiceClass.resx">
-      <DependentUpon>202002121935230_AddUnitsToServiceClass.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202002162015317_initial.resx">
+      <DependentUpon>202002162015317_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="ClassDiagram3.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -247,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\PlusIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

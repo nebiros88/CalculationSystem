@@ -20,6 +20,7 @@ namespace CalculationSystem.Entities
         public double HeatingStandart { get; set; }
 
         public virtual ICollection<Account> Accounts { get; set; }
+
         public House()
         {
             Accounts = new List<Account>();

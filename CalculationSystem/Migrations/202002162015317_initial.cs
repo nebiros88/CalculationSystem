@@ -3,16 +3,43 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Price_Service_Account_Relationship : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Accounts",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Owner = c.String(),
+                        ApartmentNumber = c.Int(nullable: false),
+                        LivingSpace = c.Double(nullable: false),
+                        HouseId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Houses", t => t.HouseId, cascadeDelete: true)
+                .Index(t => t.HouseId);
+            
+            CreateTable(
+                "dbo.Houses",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        City = c.String(),
+                        Street = c.String(),
+                        HouseNumber = c.Int(nullable: false),
+                        HeatingStandart = c.Double(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
             CreateTable(
                 "dbo.Services",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
+                        Units = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -48,12 +75,16 @@
             DropForeignKey("dbo.Prices", "ServiceId", "dbo.Services");
             DropForeignKey("dbo.ServiceAccounts", "Account_Id", "dbo.Accounts");
             DropForeignKey("dbo.ServiceAccounts", "Service_Id", "dbo.Services");
+            DropForeignKey("dbo.Accounts", "HouseId", "dbo.Houses");
             DropIndex("dbo.ServiceAccounts", new[] { "Account_Id" });
             DropIndex("dbo.ServiceAccounts", new[] { "Service_Id" });
             DropIndex("dbo.Prices", new[] { "ServiceId" });
+            DropIndex("dbo.Accounts", new[] { "HouseId" });
             DropTable("dbo.ServiceAccounts");
             DropTable("dbo.Prices");
             DropTable("dbo.Services");
+            DropTable("dbo.Houses");
+            DropTable("dbo.Accounts");
         }
     }
 }

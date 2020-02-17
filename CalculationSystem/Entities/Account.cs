@@ -22,9 +22,6 @@ namespace CalculationSystem.Entities
         [ForeignKey("HouseId")]
         public House House { get; set; }
 
-        public virtual ICollection<Service> Services{ get; set;}
-
-
-
+        public virtual ICollection<Service> Services { get; set; }
     }
 }
