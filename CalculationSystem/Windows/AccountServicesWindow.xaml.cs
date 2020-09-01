@@ -43,12 +43,9 @@ namespace CalculationSystem.Windows
                 ServiceName = s.Name,
                 ServiceRate = s.FirstPrice.Rate,
                 ServiceUnits = s.Units
-
             }));
+
             accountServicesDataGrid.ItemsSource = Calculations.ToList();
-
-
-
         }
 
         private void Close_Clicked(object sender, RoutedEventArgs e)
@@ -63,7 +60,6 @@ namespace CalculationSystem.Windows
                 c.ServiceQuantity = account.House.HeatingStandart * account.LivingSpace;
                 c.Total = c.ServiceQuantity * c.ServiceRate;
             }
-
         }
     }
 }

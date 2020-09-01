@@ -6,10 +6,10 @@
              xmlns:local="clr-namespace:CalculationSystem.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <Image x:Key="addAccountImage" Source="C:\Users\Korbut\Documents\BSUIR\Корбут\СВПП_Курсовая_Корбут_80331\CalculationSystem\CalculationSystem\Icons\PlusIcon.jpg" ></Image>
-        <Image x:Key="dellAccountImage" Source="C:\Users\Korbut\Documents\BSUIR\Корбут\СВПП_Курсовая_Корбут_80331\CalculationSystem\CalculationSystem\Icons\MinusIcon.jpg"></Image>
-    </UserControl.Resources>
+    <!--<UserControl.Resources>
+        --><!--<Image x:Key="addAccountImage" Source="C:\Users\Korbut\Documents\BSUIR\Корбут\СВПП_Курсовая_Корбут_80331\CalculationSystem\CalculationSystem\Icons\PlusIcon.jpg" ></Image>
+        <Image x:Key="dellAccountImage" Source="C:\Users\Korbut\Documents\BSUIR\Корбут\СВПП_Курсовая_Корбут_80331\CalculationSystem\CalculationSystem\Icons\MinusIcon.jpg"></Image>--><!--
+    </UserControl.Resources>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -51,14 +51,14 @@
                     <Button Content="Find" Width="60" Margin="10,0,0,0" Click="ButtonFind_Click" />
                     <Button Content="Clear all" Width="60" Margin="10,0,5,0" Click="ButtonClear_Click"/>
                     <Button Content="Edit" Width="40" Margin="5,0" Click="EditAccount_Clicked"></Button>
-                    <Button Name="btAddNewAccount" Content="{StaticResource addAccountImage}" Width="25" Margin="10,0" Click="AddNewAccount_Clicked" >
+                    <Button Name="btAddNewAccount" Content="+" Width="25" Margin="10,0" Click="AddNewAccount_Clicked" >
                         <Button.ToolTip>
                             <ToolTip ToolTipService.ShowDuration="5000" ToolTipService.InitialShowDelay="2000">
                                 Create new account
                             </ToolTip>
                         </Button.ToolTip>
                     </Button>
-                    <Button Name="tbDeleteSelectedAccount" Content="{StaticResource dellAccountImage}" Width="25" Click="DeleteSelectedAccount_Clicked">
+                    <Button Name="tbDeleteSelectedAccount" Content="-" Width="25" Click="DeleteSelectedAccount_Clicked">
                         <Button.ToolTip>
                             <ToolTip ToolTipService.ShowDuration="5000" ToolTipService.InitialShowDelay="2000">
                                 Delete selected account
@@ -102,7 +102,7 @@
             
         </Grid>
 
-        <DataGrid Name="personalAccountsDataGrid" Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" AutoGenerateColumns="False" ColumnWidth="Auto" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="WhiteSmoke">
+        <DataGrid Name="AccountsGrid" Grid.Row="2" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" AutoGenerateColumns="False" ColumnWidth="Auto" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="WhiteSmoke">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Width="Auto" Header="Account Number"/>
                 <DataGridTextColumn Binding="{Binding Owner}" Width="Auto" Header="Owner/Payer"/>

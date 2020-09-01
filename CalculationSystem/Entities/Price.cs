@@ -13,9 +13,12 @@ namespace CalculationSystem.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public double Rate { get; set; }
+
         [Required]
         public int ServiceId { get; set; }
+
         [ForeignKey("ServiceId")]
         public Service Service { get; set; }
 

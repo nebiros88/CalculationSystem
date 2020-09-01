@@ -100,6 +100,9 @@
     <Compile Include="Windows\HouseAdditionWindow.xaml.cs">
       <DependentUpon>HouseAdditionWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\OpenPeriodWindow.xaml.cs">
+      <DependentUpon>OpenPeriodWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\HouseAdditionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\OpenPeriodWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

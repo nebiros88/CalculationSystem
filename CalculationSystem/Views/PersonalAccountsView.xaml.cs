@@ -3,6 +3,7 @@ using CalculationSystem.Entities;
 using CalculationSystem.Windows;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,13 +27,27 @@ namespace CalculationSystem.Views
         public PersonalAccountsView()
         {
             InitializeComponent();
+            AccountsGrid.ItemsSource = GetAllAccounts();
+
             //var dbContext = new CalculationSystemDbContext();
 
             //Account newAccount = new Account { Owner = "Ivanov Ivan Ivanovich" };
             //dbContext.Accounts.Add(newAccount);
             //dbContext.SaveChanges();
 
-            //personalAccountsDataGrid.ItemsSource = dbContext.Accounts.ToList();
+            //AccountsGrid.ItemsSource = dbContext.Accounts.ToList();
+        }
+
+        private IEnumerable<Account> GetAllAccounts()
+        {
+            using (var context = new CalculationSystemDbContext())
+            {
+                return new ObservableCollection<Account>(
+                    context.Accounts
+                        .Include("House")
+                        .Include("Services")
+                        .Include("Services.Prices"));
+            }
         }
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)                     //Search button
@@ -40,7 +55,7 @@ namespace CalculationSystem.Views
             var dbContext = new CalculationSystemDbContext();
             if (String.IsNullOrEmpty(tbAccountId.Text) && String.IsNullOrEmpty(tbOwner.Text))
             {
-                personalAccountsDataGrid.ItemsSource = dbContext.Accounts.Include("House").ToList();
+                AccountsGrid.ItemsSource = dbContext.Accounts.Include("House").ToList();
             }
             else
             {
@@ -52,12 +67,12 @@ namespace CalculationSystem.Views
                     tbl.Add(account);
                     if (account == null)
                     {
-                        personalAccountsDataGrid.ItemsSource = new List<Account>();
+                        AccountsGrid.ItemsSource = new List<Account>();
                         MessageBox.Show("Nothing found");
                     }
                     else
                     {
-                        personalAccountsDataGrid.ItemsSource = tbl;
+                        AccountsGrid.ItemsSource = tbl;
                         MessageBox.Show("Search completed succesfully by the Id");
                     }
                 }
@@ -67,12 +82,12 @@ namespace CalculationSystem.Views
                     List<Account> tbl = dbContext.Accounts.Where(x => x.Owner == owner).ToList();
                     if (tbl.Count < 1)
                     {
-                        personalAccountsDataGrid.ItemsSource = new List<Account>();
+                        AccountsGrid.ItemsSource = new List<Account>();
                         MessageBox.Show("Nothing found");
                     }
                     else
                     {
-                        personalAccountsDataGrid.ItemsSource = tbl;
+                        AccountsGrid.ItemsSource = tbl;
                         MessageBox.Show("Search completed succesfully by the owner");
                     }
                 }
@@ -93,37 +108,45 @@ namespace CalculationSystem.Views
         private void AddNewAccount_Clicked(object sender, RoutedEventArgs e)
         {
             AddAccountWindow newAccountWindow = new AddAccountWindow();
-            var result = newAccountWindow.ShowDialog();
-            if (result == false)
+            var dialogResult = newAccountWindow.ShowDialog();
+
+            if (!dialogResult.HasValue || dialogResult.Value)
             {
                 newAccountWindow.Close();
             }
             else
             {
-                try
+                SaveAccount(
+                    newAccountWindow.tbOwner.Text,
+                    newAccountWindow.tbLivingSpace.Text,
+                    AddAccountWindow.selectedHouse.Id,
+                    newAccountWindow.tbApartmentNumber.Text);
+
+                MessageBox.Show("New personal account created successfully");
+            }
+        }
+
+        private void SaveAccount(string owner, string space, int houseId, string aptNumber)
+        {
+            using (var dbContext = new CalculationSystemDbContext())
+            {
+                Account newAccount = new Account
                 {
-                    using (var dbContext = new CalculationSystemDbContext())
-                    {
-                        Account newAccount = new Account();
-                        newAccount.Owner = newAccountWindow.tbOwner.Text;
-                        newAccount.LivingSpace = double.Parse(newAccountWindow.tbLivingSpace.Text);
-                        newAccount.HouseId = AddAccountWindow.selectedHouse.Id;
-                        newAccount.ApartmentNumber = int.Parse(newAccountWindow.tbApartmentNumber.Text);
-                        dbContext.Accounts.Add(newAccount);
-                        dbContext.SaveChanges();
-                        MessageBox.Show("New personal account created successfully");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Impossible! Reason: -{ex.Message}");
-                }
+                    Owner = owner,
+                    LivingSpace = double.Parse(space),
+                    HouseId = houseId,
+                    ApartmentNumber = int.Parse(aptNumber),
+                    Services = new List<Service> { Service.DefaultService }
+                };
+
+                dbContext.Accounts.Add(newAccount);
+                dbContext.SaveChanges();
             }
         }
 
         private void DeleteSelectedAccount_Clicked(object sender, RoutedEventArgs e)
         {
-            if (personalAccountsDataGrid.SelectedIndex > -1)
+            if (AccountsGrid.SelectedIndex > -1)
             {
                 var result = MessageBox.Show("Are you sure?", "Delete this account?", MessageBoxButton.YesNo);
                 if (result == MessageBoxResult.Yes)
@@ -132,7 +155,7 @@ namespace CalculationSystem.Views
                     {
                         using (var dbContext = new CalculationSystemDbContext())
                         {
-                            Account delAccount = personalAccountsDataGrid.SelectedItem as Account;
+                            Account delAccount = AccountsGrid.SelectedItem as Account;
                             dbContext.Accounts.Remove(dbContext.Accounts.Single(h => h.Id == delAccount.Id));
                             dbContext.SaveChanges();
                             MessageBox.Show("Selected house was deleted!");
@@ -148,10 +171,10 @@ namespace CalculationSystem.Views
 
         private void EditAccount_Clicked(object sender, RoutedEventArgs e)
         {
-            if (personalAccountsDataGrid.SelectedIndex > -1)
+            if (AccountsGrid.SelectedIndex > -1)
             {
                 EditAccountWindow newEditAccountWindow = new EditAccountWindow();
-                Account editAccount = personalAccountsDataGrid.SelectedItem as Account;
+                Account editAccount = AccountsGrid.SelectedItem as Account;
                 newEditAccountWindow.tbOwner.Text = editAccount.Owner;
                 newEditAccountWindow.tbApartmentNumber.Text = editAccount.ApartmentNumber.ToString();
                 newEditAccountWindow.tbLivingSpace.Text = editAccount.LivingSpace.ToString();
@@ -191,28 +214,26 @@ namespace CalculationSystem.Views
         {
             using (var dbContext = new CalculationSystemDbContext())
             {
-                personalAccountsDataGrid.ItemsSource = dbContext.Accounts.Include("House").ToList();
+                AccountsGrid.ItemsSource = dbContext.Accounts.Include("House").ToList();
             }
         }
 
         private void btGoToAccount_Clicked(object sender, RoutedEventArgs e)
         {
-            if (personalAccountsDataGrid.SelectedIndex > -1)
+            if (AccountsGrid.SelectedIndex > -1)
             {
-                using (var dbContext = new CalculationSystemDbContext())
-                {
-                    Account account = personalAccountsDataGrid.SelectedItem as Account;
-                    AccountServicesWindow accountServicesWindow = new AccountServicesWindow(account);
-                    var result = accountServicesWindow.ShowDialog();
-                    if (result == false)
-                    {
-                        accountServicesWindow.Close();
-                    }
-                    else
-                    {
+                Account account = AccountsGrid.SelectedItem as Account;
+                AccountServicesWindow accountServicesWindow = new AccountServicesWindow(account);
 
-                    }
-                    
+                var result = accountServicesWindow.ShowDialog();
+
+                if (result == false)
+                {
+                    accountServicesWindow.Close();
+                }
+                else
+                {
+
                 }
             }
             else

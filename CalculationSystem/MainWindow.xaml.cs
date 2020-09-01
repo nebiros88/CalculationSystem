@@ -1,6 +1,7 @@
 ﻿using CalculationSystem.Db;
 using CalculationSystem.Entities;
 using CalculationSystem.ViewModels;
+using CalculationSystem.Windows;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -27,8 +28,6 @@ namespace CalculationSystem
         public MainWindow()
         {
             InitializeComponent();
-            
-
         }
 
         private void PersonalAccounts_Clicked(object sender, RoutedEventArgs e)
@@ -44,6 +43,12 @@ namespace CalculationSystem
         private void Exit_Clicked(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var openPeriodWindow = new OpenPeriodWindow();
+            openPeriodWindow.ShowDialog();
         }
     }
 }

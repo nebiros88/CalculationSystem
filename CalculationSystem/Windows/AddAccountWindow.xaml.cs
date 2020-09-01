@@ -31,14 +31,22 @@ namespace CalculationSystem.Windows
 
         private void btOk_Clicked(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(tbOwner.Text) || String.IsNullOrEmpty(tbApartmentNumber.Text) || String.IsNullOrEmpty(tbLivingSpace.Text) || String.IsNullOrEmpty(tbSelectedHome.Text))
+            if (!IsValid())
             {
-                MessageBox.Show("Fill out all forms!");
+                MessageBox.Show("Fill out all the fields in the form!");
             }
             else
             {
                 DialogResult = true;
             }
+        }
+
+        private bool IsValid()
+        {
+            return !string.IsNullOrEmpty(tbOwner.Text) &&
+                    !string.IsNullOrEmpty(tbApartmentNumber.Text) &&
+                    !string.IsNullOrEmpty(tbLivingSpace.Text) &&
+                    !string.IsNullOrEmpty(tbSelectedHome.Text);
         }
 
         private void btCancel_Clicked(object sender, RoutedEventArgs e)
@@ -50,6 +58,7 @@ namespace CalculationSystem.Windows
         {
             HomeSelectionWindow selectHomeWindow = new HomeSelectionWindow();
             var result = selectHomeWindow.ShowDialog();
+
             if (result == false)
             {
                 selectHomeWindow.Close();

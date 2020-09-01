@@ -12,9 +12,12 @@ namespace CalculationSystem.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public string Name { get; set; }    // наименование услуги   
+        public int Id { get; private set; }
+
+        public string Name { get; set; }    // наименование услуги  
+        
         public string Units { get; set; }   // единицы измерения
+
         public Price FirstPrice
         {
             get
@@ -31,5 +34,12 @@ namespace CalculationSystem.Entities
         }
 
         public virtual ICollection<Account> Accounts { get; set; }
+
+        public static Service DefaultService = new Service
+        {
+            Name = "Отопление",
+            Units = "rand",
+            Prices = new List<Price> { new Price { Rate = .5 }  }
+        };
     }
 }

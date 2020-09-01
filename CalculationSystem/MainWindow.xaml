@@ -6,7 +6,7 @@
         xmlns:viewmodels="clr-namespace:CalculationSystem.ViewModels"
         xmlns:views="clr-namespace:CalculationSystem.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="625" Width="1200">
+        Title="MainWindow" Height="625" Width="1200" Loaded="Window_Loaded">
     <Window.Resources>
         <DataTemplate x:Name="personalAccountsViewTemplate" DataType="{x:Type viewmodels:PersonalAccountsViewModel}">
             <views:PersonalAccountsView DataContext="{Binding}"/>

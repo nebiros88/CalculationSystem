@@ -16,8 +16,11 @@ namespace CalculationSystem.Entities
         private double? total;
 
         public int ServiceId { get; set; }
+
         public string ServiceName { get; set; }
+
         public double ServiceRate { get; set; }
+
         public double? ServiceQuantity { get { return serviceQuantity; }
             set {
                 serviceQuantity = value;
@@ -25,10 +28,12 @@ namespace CalculationSystem.Entities
             }
         }
         public string ServiceUnits { get; set; }
+
         public double? Total { get { return total; }
             set {
                 total = value;
-                NotifyPropertyChanged();            }
+                NotifyPropertyChanged();            
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
