@@ -67,11 +67,21 @@
     </ApplicationDefinition>
     <Compile Include="Entities\Calculation.cs" />
     <Compile Include="Entities\House.cs" />
+    <Compile Include="Entities\Period.cs" />
     <Compile Include="Entities\Price.cs" />
     <Compile Include="Entities\Service.cs" />
     <Compile Include="Migrations\202002162015317_initial.cs" />
     <Compile Include="Migrations\202002162015317_initial.designer.cs">
       <DependentUpon>202002162015317_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009031935445_AddPeriods.cs" />
+    <Compile Include="Migrations\202009031935445_AddPeriods.designer.cs">
+      <DependentUpon>202009031935445_AddPeriods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009031935445_AddPeriods1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>202009031935445_AddPeriods.resx</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\HousingRegistryViewModel.cs" />
@@ -170,6 +180,11 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202002162015317_initial.resx">
       <DependentUpon>202002162015317_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009031935445_AddPeriods.resx">
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <DependentUpon>202009031935445_AddPeriods.cs</DependentUpon>
+      <LastGenOutput>202009031935445_AddPeriods1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

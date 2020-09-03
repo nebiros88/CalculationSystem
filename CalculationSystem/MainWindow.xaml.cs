@@ -5,6 +5,7 @@ using CalculationSystem.Windows;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace CalculationSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Period OpenedPeriod { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,8 +50,62 @@ namespace CalculationSystem
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var openPeriodWindow = new OpenPeriodWindow();
-            openPeriodWindow.ShowDialog();
+            SetOpenedPerion();
+
+            if (!ThereIsOpenedPeriod())
+            {
+                var openPeriodWindow = new OpenPeriodWindow();
+                var hasPeriodBeenOpened = openPeriodWindow.ShowDialog();
+                ProcessPeriod(hasPeriodBeenOpened, openPeriodWindow.OpenedPeriod);
+            }
+            else
+            {
+                UpdatePeriodStatusInWindow(OpenedPeriod);
+            }
+        }
+
+        private void ProcessPeriod(bool? hasPeriodBeenOpened, int monthToOpen)
+        {
+            if (hasPeriodBeenOpened.HasValue && hasPeriodBeenOpened.Value)
+            {
+                var period = new Period
+                {
+                    IsOpened = true,
+                    Month = monthToOpen,
+                    Year = DateTime.Now.Year
+                };
+
+                SavePeriod(period);
+                UpdatePeriodStatusInWindow(period);
+            }
+        }
+
+        private void UpdatePeriodStatusInWindow(Period period)
+        {
+            CurrentPeriodManagementBar.Visibility = Visibility.Visible;
+            OpenedPeriodTextValue.Text = $"{DateTimeFormatInfo.CurrentInfo.GetMonthName(period.Month)} {period.Year}";
+        }
+
+        private void SavePeriod(Period p)
+        {
+            using (var db = new CalculationSystemDbContext())
+            {
+                db.Periods.Add(p);
+                db.SaveChanges();
+            }
+        }
+
+        private void SetOpenedPerion()
+        {
+            using (var db = new CalculationSystemDbContext())
+            {
+                OpenedPeriod = db.Periods.SingleOrDefault(p => p.IsOpened);
+            }
+        }
+
+        private bool ThereIsOpenedPeriod()
+        {
+            return OpenedPeriod != null;
         }
     }
 }

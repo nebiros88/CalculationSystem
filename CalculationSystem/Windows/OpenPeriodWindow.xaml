@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculationSystem.Windows"
         mc:Ignorable="d"
-        Title="OpenPeriodWindow" Height="300" Width="500">
+        Title="OpenPeriodWindow" Height="300" Width="387.5" ResizeMode="NoResize">
     <Grid Margin="0,0,-5,-17.5" VerticalAlignment="Top">
-        <ListBox x:Name="PeriodsListBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="198" Loaded="ListBox_Loaded" />
+        <ListBox x:Name="PeriodsListBox" HorizontalAlignment="Left" Margin="10,10,0,0" SelectedValuePath="Key" DisplayMemberPath="Value" VerticalAlignment="Top" Width="198" Loaded="ListBox_Loaded" SelectionChanged="PeriodsListBox_SelectionChanged" />
+        <Button Name="OpenPeriodBtn" Content="Open" HorizontalAlignment="Left" Margin="264,104,0,-84" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="OpenPeriodBtn_Click"/>
+        <Label HorizontalAlignment="Left" Margin="259,127,0,-91" VerticalAlignment="Top" FontSize="7" Width="113" FontFamily="Calibri" FontStyle="Italic">
+            <TextBlock TextDecorations="Underline" Cursor="Hand" FontSize="8" >or keep working without period</TextBlock>
+        </Label>
 
     </Grid>
 </Window>

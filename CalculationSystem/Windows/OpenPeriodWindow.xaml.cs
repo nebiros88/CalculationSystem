@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CalculationSystem.Db;
+using CalculationSystem.Entities;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -25,10 +27,12 @@ namespace CalculationSystem.Windows
             InitializeComponent();
         }
 
+        public int OpenedPeriod { get; private set; }
+
         private void ListBox_Loaded(object sender, RoutedEventArgs e)
         {
-            PeriodsListBox.ItemsSource = DateTimeFormatInfo.CurrentInfo.MonthNames.Take(12);
             Center();
+            PeriodsListBox.ItemsSource = GetEligibleToProcessPeriods();
         }
 
         private void Center()
@@ -36,6 +40,41 @@ namespace CalculationSystem.Windows
             Window mainWindow = Application.Current.MainWindow;
             Left = mainWindow.Left + (mainWindow.Width - ActualWidth) / 2;
             Top = mainWindow.Top + (mainWindow.Height - ActualHeight) / 2;
+        }
+
+        private IDictionary<int, string> GetEligibleToProcessPeriods()
+        {
+            Period lastOpenedPeriod = GetLastOpenedPeriod();
+            int month = lastOpenedPeriod == null ? 1 : lastOpenedPeriod.Month;
+
+            var months = from value in Enumerable.Range(month, 12)
+                         let name = DateTimeFormatInfo.CurrentInfo.GetMonthName(value)
+                         select new { value, name };
+
+            return months.ToDictionary(m => m.value, m => m.name);
+        }
+
+        private Period GetLastOpenedPeriod()
+        {
+            using (var db = new CalculationSystemDbContext())
+            {
+                return db.Periods
+                    .Where(p => p.Year == DateTime.Now.Year)
+                    .OrderByDescending(p => p.Id)
+                    .FirstOrDefault();
+            }
+        }
+
+        private void PeriodsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            OpenedPeriod = ((KeyValuePair<int, string>)e.AddedItems[0]).Key;
+            OpenPeriodBtn.IsEnabled = true;
+        }
+
+        private void OpenPeriodBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+            Close();
         }
     }
 }

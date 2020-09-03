@@ -15,7 +15,7 @@
             <views:HousingRegistryView DataContext="{Binding}"/>
         </DataTemplate>
     </Window.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -58,6 +58,12 @@
         <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" Stretch="Fill" Source="C:\Users\Korbut\Documents\BSUIR\Корбут\СВПП_Курсовая_Корбут_80331\CalculationSystem\CalculationSystem\Images\MainWindowTheme2.jpg">
         </Image>
         <ContentControl Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" Content="{Binding}" />
+        <StatusBar Name="CurrentPeriodManagementBar" HorizontalAlignment="Left" Height="45" Margin="0,51,0,-0.5" Grid.Row="6" VerticalAlignment="Top" Width="1195" Grid.ColumnSpan="6" Visibility="Hidden">
+            <StackPanel>
+                <TextBlock Name="OpenedPeriodText" TextWrapping="Wrap"><Bold>Opened Period</Bold>: <Run Name="OpenedPeriodTextValue"></Run></TextBlock>
+                <TextBlock TextWrapping="Wrap" TextDecorations="Underline" FontStyle="Italic" Cursor="Hand">Click to close it</TextBlock>
+            </StackPanel>
+        </StatusBar>
     </Grid>
-        
+
 </Window>

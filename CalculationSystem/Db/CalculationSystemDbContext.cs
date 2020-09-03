@@ -11,14 +11,19 @@ namespace CalculationSystem.Db
     public class CalculationSystemDbContext : DbContext
     {
         public CalculationSystemDbContext()
-            :base("DBConnection")
+            : base("DBConnection")
         {
 
         }
 
         public DbSet<Account> Accounts { get; set; }
+
         public DbSet<House> Houses { get; set; }
+
         public DbSet<Service> Services { get; set; }
+
         public DbSet<Price> Prices { get; set; }
+
+        public DbSet<Period> Periods { get; set; }
     }
 }
