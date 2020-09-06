@@ -107,5 +107,10 @@ namespace CalculationSystem
         {
             return OpenedPeriod != null;
         }
+
+        private void DeviceRegistry_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new MeteringDeviceRegistryViewModel();
+        }
     }
 }

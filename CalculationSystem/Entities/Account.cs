@@ -14,11 +14,16 @@ namespace CalculationSystem.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         public string Owner { get; set; }
+
         public int ApartmentNumber { get; set; }
+
         public double LivingSpace { get; set; }
+
         [Required]
         public int HouseId { get; set; }
+
         [ForeignKey("HouseId")]
         public House House { get; set; }
 

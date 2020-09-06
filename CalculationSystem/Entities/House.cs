@@ -21,6 +21,8 @@ namespace CalculationSystem.Entities
 
         public virtual ICollection<Account> Accounts { get; set; }
 
+        public virtual MeteringDevice GroupMeteringDevice { get; set; }
+
         public House()
         {
             Accounts = new List<Account>();

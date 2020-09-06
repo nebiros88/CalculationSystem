@@ -67,6 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="Entities\Calculation.cs" />
     <Compile Include="Entities\House.cs" />
+    <Compile Include="Entities\MeteringDevice.cs" />
     <Compile Include="Entities\Period.cs" />
     <Compile Include="Entities\Price.cs" />
     <Compile Include="Entities\Service.cs" />
@@ -83,9 +84,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>202009031935445_AddPeriods.resx</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009061939193_AddMeteringDevice.cs" />
+    <Compile Include="Migrations\202009061939193_AddMeteringDevice.designer.cs">
+      <DependentUpon>202009061939193_AddMeteringDevice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009061939193_AddMeteringDevice1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>202009061939193_AddMeteringDevice.resx</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\HousingRegistryViewModel.cs" />
+    <Compile Include="ViewModels\MeteringDeviceRegistryViewModel.cs" />
     <Compile Include="ViewModels\PersonalAccountsViewModel.cs" />
+    <Compile Include="Views\MeteringDeviceRegistryView.xaml.cs">
+      <DependentUpon>MeteringDeviceRegistryView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HousingRegistryView.xaml.cs">
       <DependentUpon>HousingRegistryView.xaml</DependentUpon>
     </Compile>
@@ -127,6 +141,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MeteringDeviceRegistryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\HousingRegistryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -185,6 +203,11 @@
       <Generator>ResXFileCodeGeneratorEx</Generator>
       <DependentUpon>202009031935445_AddPeriods.cs</DependentUpon>
       <LastGenOutput>202009031935445_AddPeriods1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009061939193_AddMeteringDevice.resx">
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <DependentUpon>202009061939193_AddMeteringDevice.cs</DependentUpon>
+      <LastGenOutput>202009061939193_AddMeteringDevice1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

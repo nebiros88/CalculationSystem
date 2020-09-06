@@ -14,6 +14,9 @@
         <DataTemplate x:Name="housingRegistryViewTemplate" DataType="{x:Type viewmodels:HousingRegistryViewModel}">
             <views:HousingRegistryView DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="deviceRegistryViewTemplate" DataType="{x:Type viewmodels:MeteringDeviceRegistryViewModel}">
+            <views:MeteringDeviceRegistryView DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -50,8 +53,7 @@
                 <MenuItem Header="Housing registry" Click="HousingRegistry_Clicked" ></MenuItem>
             </MenuItem>
             <MenuItem Header="Metering devices">
-                <MenuItem Header="Devices registry">
-
+                <MenuItem Header="Devices registry" Click="DeviceRegistry_Click">
                 </MenuItem>
             </MenuItem>
         </Menu>

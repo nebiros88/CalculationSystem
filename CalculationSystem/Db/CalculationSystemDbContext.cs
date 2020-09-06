@@ -25,5 +25,14 @@ namespace CalculationSystem.Db
         public DbSet<Price> Prices { get; set; }
 
         public DbSet<Period> Periods { get; set; }
+
+        public DbSet<MeteringDevice> MeteringDevices { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<House>()
+               .HasOptional(h => h.GroupMeteringDevice)
+               .WithRequired(d => d.House);
+        }
     }
 }
