@@ -10,10 +10,9 @@ namespace CalculationSystem.Entities
 {
     public class MeteringDevice
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [ForeignKey("House")]
-        public int Id { get; protected set; }
+        public int Id { get; set; }
 
         public double Readings { get; set; }
 

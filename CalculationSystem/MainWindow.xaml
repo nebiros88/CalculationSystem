@@ -63,7 +63,7 @@
         <StatusBar Name="CurrentPeriodManagementBar" HorizontalAlignment="Left" Height="45" Margin="0,51,0,-0.5" Grid.Row="6" VerticalAlignment="Top" Width="1195" Grid.ColumnSpan="6" Visibility="Hidden">
             <StackPanel>
                 <TextBlock Name="OpenedPeriodText" TextWrapping="Wrap"><Bold>Opened Period</Bold>: <Run Name="OpenedPeriodTextValue"></Run></TextBlock>
-                <TextBlock TextWrapping="Wrap" TextDecorations="Underline" FontStyle="Italic" Cursor="Hand">Click to close it</TextBlock>
+                <TextBlock TextWrapping="Wrap" TextDecorations="Underline" FontStyle="Italic" Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp">Click to close it</TextBlock>
             </StackPanel>
         </StatusBar>
     </Grid>

@@ -3,21 +3,10 @@ using CalculationSystem.Entities;
 using CalculationSystem.ViewModels;
 using CalculationSystem.Windows;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CalculationSystem
 {
@@ -54,9 +43,7 @@ namespace CalculationSystem
 
             if (!ThereIsOpenedPeriod())
             {
-                var openPeriodWindow = new OpenPeriodWindow();
-                var hasPeriodBeenOpened = openPeriodWindow.ShowDialog();
-                ProcessPeriod(hasPeriodBeenOpened, openPeriodWindow.OpenedPeriod);
+                SuggestOpeningPeriod();
             }
             else
             {
@@ -76,6 +63,7 @@ namespace CalculationSystem
                 };
 
                 SavePeriod(period);
+                OpenedPeriod = period;
                 UpdatePeriodStatusInWindow(period);
             }
         }
@@ -111,6 +99,31 @@ namespace CalculationSystem
         private void DeviceRegistry_Click(object sender, RoutedEventArgs e)
         {
             DataContext = new MeteringDeviceRegistryViewModel();
+        }
+
+        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            ClosePeriod();
+            CurrentPeriodManagementBar.Visibility = Visibility.Hidden;
+            DataContext = null;
+            SuggestOpeningPeriod();
+        }
+
+        private void ClosePeriod()
+        {
+            using (var db = new CalculationSystemDbContext())
+            {
+                Period period = db.Periods.Single(p => p.Id == OpenedPeriod.Id);
+                period.IsOpened = false;
+                db.SaveChanges();
+            }
+        }
+
+        private void SuggestOpeningPeriod()
+        {
+            var openPeriodWindow = new OpenPeriodWindow();
+            var hasPeriodBeenOpened = openPeriodWindow.ShowDialog();
+            ProcessPeriod(hasPeriodBeenOpened, openPeriodWindow.OpenedPeriod);
         }
     }
 }

@@ -3,6 +3,7 @@ using CalculationSystem.Entities;
 using CalculationSystem.Windows;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,64 +24,76 @@ namespace CalculationSystem.Views
     /// </summary>
     public partial class MeteringDeviceRegistryView : UserControl
     {
+        private ObservableCollection<MeteringDevice> devices;
+
         public MeteringDeviceRegistryView()
         {
             InitializeComponent();
+            LoadDevices();
+            deviceRegistryDataGrid.ItemsSource = devices;
+        }
+
+        private void LoadDevices()
+        {
+            using (var db = new CalculationSystemDbContext())
+            {
+                devices = new ObservableCollection<MeteringDevice>(db.MeteringDevices.Include("House").ToList());
+            }
         }
 
         private void DeviceAddition_Clicked(object sender, RoutedEventArgs e)
         {
-            //HouseAdditionWindow newHouseWindow = new HouseAdditionWindow();
-            //var result = newHouseWindow.ShowDialog();
-            //if (result == false)
-            //{
-            //    newHouseWindow.Close();
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        var dbContext = new CalculationSystemDbContext();
-            //        House house = new House();
-            //        house.City = newHouseWindow.cbCity.SelectedItem.ToString();
-            //        house.Street = newHouseWindow.cbStreet.SelectedItem.ToString();
-            //        house.HouseNumber = int.Parse(newHouseWindow.tbHouseNumber.Text);
-            //        house.HeatingStandart = double.Parse(newHouseWindow.tbHeatingStandart.Text);
-            //        if (!String.IsNullOrEmpty(newHouseWindow.tbCaseNumber.Text))
-            //        {
-            //            house.CaseNumber = newHouseWindow.tbCaseNumber.Text[0];
-            //        }
-            //        else
-            //        {
-            //            house.CaseNumber = null;
-            //        }
-            //        dbContext.Houses.Add(house);
-            //        dbContext.SaveChanges();
-            //    }
-            //    catch (Exception exception)
-            //    {
-            //        MessageBox.Show($"Impossible! Reason: -{exception.Message}");
-            //    }
-            //}
+            var addWindow = new AddMeteringDeviceWindow();
+            var result = addWindow.ShowDialog();
+
+            if (result.HasValue && result.Value)
+            {
+                CreateDevice(addWindow.InitialReadings, addWindow.SelectedHouse);
+            }
+            else
+            {
+                addWindow.Close();
+            }
+        }
+
+        private void CreateDevice(double initialReadings, House house)
+        {
+            using (var dbContext = new CalculationSystemDbContext())
+            {
+                dbContext.MeteringDevices.Add(new MeteringDevice
+                {
+                    House = house,
+                    Readings = initialReadings
+                });
+
+                dbContext.SaveChanges();
+            }
         }
 
         private void Delete_Clicked(object sender, RoutedEventArgs e)
         {
-            //if (housingRegistryDataGrid.SelectedIndex > -1)
-            //{
-            //    var result = MessageBox.Show("Are you sure?", "Delete this house?", MessageBoxButton.YesNo);
-            //    if (result == MessageBoxResult.Yes)
-            //    {
-            //        using (var dbContext = new CalculationSystemDbContext())
-            //        {
-            //            House delHouse = housingRegistryDataGrid.SelectedItem as House;
-            //            dbContext.Houses.Remove(dbContext.Houses.Single(h => h.Id == delHouse.Id));
-            //            dbContext.SaveChanges();
-            //            UpdateOrRefresh();
-            //            MessageBox.Show("Selected house was deleted!");
-            //        }
-            //    }
-            //}
+            if (deviceRegistryDataGrid.SelectedIndex > -1)
+            {
+                MeteringDevice selectedDevice = deviceRegistryDataGrid.SelectedItem as MeteringDevice;
+                var result = MessageBox.Show("Are you sure?", "Delete this device?", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    RemoveDevice(selectedDevice.Id);
+                    devices.Remove(selectedDevice);
+                    MessageBox.Show("Selected device was deleted!");
+                }
+            }
+        }
+
+        private void RemoveDevice(int deviceId)
+        {
+            using (var dbContext = new CalculationSystemDbContext())
+            {
+                MeteringDevice device = dbContext.MeteringDevices.Single(d => d.Id == deviceId);
+                dbContext.MeteringDevices.Remove(device);
+                dbContext.SaveChanges();
+            }
         }
 
         private void EditDevice_Clicked(object sender, RoutedEventArgs e)

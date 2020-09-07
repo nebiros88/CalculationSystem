@@ -24,7 +24,7 @@ namespace CalculationSystem.Migrations {
     [global::System.Reflection.ObfuscationAttribute(Exclude=true, ApplyToMembers=true)]
 #endif
     [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Naming", "CA1724:TypeNamesShouldNotMatchNamespaces")]
-    public partial class _202009061939193_AddMeteringDevice {
+    public partial class _202009071629174_ADdMeteringDevice {
         
         private static global::System.Resources.ResourceManager _resourceManager;
         
@@ -33,10 +33,10 @@ namespace CalculationSystem.Migrations {
         private static global::System.Globalization.CultureInfo _resourceCulture;
         
         /// <summary>
-        /// Initializes a 202009061939193_AddMeteringDevice object.
+        /// Initializes a 202009071629174_ADdMeteringDevice object.
         /// </summary>
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public _202009061939193_AddMeteringDevice() {
+        public _202009071629174_ADdMeteringDevice() {
         }
         
         /// <summary>
@@ -61,7 +61,7 @@ namespace CalculationSystem.Migrations {
                     global::System.Threading.Monitor.Enter(InternalSyncObject);
                     try {
                         if (object.ReferenceEquals(_resourceManager, null)) {
-                            global::System.Threading.Interlocked.Exchange(ref _resourceManager, new global::System.Resources.ResourceManager("CalculationSystem.Migrations.202009061939193_AddMeteringDevice", typeof(_202009061939193_AddMeteringDevice).Assembly));
+                            global::System.Threading.Interlocked.Exchange(ref _resourceManager, new global::System.Resources.ResourceManager("CalculationSystem.Migrations.202009071629174_ADdMeteringDevice", typeof(_202009071629174_ADdMeteringDevice).Assembly));
                         }
                     }
                     finally {
@@ -96,7 +96,7 @@ namespace CalculationSystem.Migrations {
         }
         
         /// <summary>
-        /// Looks up a localized string similar to 'H4sIAAAAAAAEAO1c3W7jNha+X2DfQdBVdzG1k8zNNrBbpPZMG3SSDOJM0V4NaIl2hNWPV6SyCRb7ZL3YR9pX6JFEURR/JEqyncwgGGCQiDyHh+d8hzykPuX/f/xv9sNjFDoPOCVBEs/d08mJ6+DYS/wg3s7djG6+/Yf7w/d//cvsnR89Or9W/d7m/UAyJnP3ntLd+XRKvHscITKJAi9NSLKhEy+JpshPpmcnJ99NT0+nGFS4oMtxZrdZTIMIF7/Ar4sk9vCOZii8SnwcEvYcWlaFVucaRZjskIfn7gKFXhYiCnasngjF0WS5dp2LMEBgywqHG9dBcZzQosf5J4JXNE3i7WoHD1B497TD0G+DQoLZDM7r7raTOTnLJzOtBStVXkZoEvVUePqWeWcqiw/yscu9B/57B36mT/msCx/O3QvPS8D5riOPdb4I07yfzsOFlgCTCZN+4yh93nBwAIbyf9AnC2mW4nmMM5qi8I3zMVuHgfcLfrpL/onjeZyFoWgs [rest of string was truncated]&quot;;'.
+        /// Looks up a localized string similar to 'H4sIAAAAAAAEAO1c3W7jNha+L7DvIOhqt5jaSeamDewWqT3TBp0kgzhT7F4NaIl2hNWPV6TSBIt9sl70kfoKeyRRFMUfiZJsJzMdFCgmIs/h4eF3eA6pT/7z9z9mPzxGofOAUxIk8dw9nZy4Do69xA/i7dzN6Oabb90fvv/bV7M3fvTo/Fr1e533A8mYzN17Snfn0ynx7nGEyCQKvDQhyYZOvCSaIj+Znp2cfDc9PZ1iUOGCLseZ3WYxDSJc/AF/LpLYwzuaofAq8XFI2HNoWRVanWsUYbJDHp67CxR6WYgo2LF6IhRHk+XadS7CAIEtKxxuXAfFcUKLHucfCF7RNIm3qx08QOHd0w5Dvw0KCWYzOK+7207m5CyfzLQWrFR5GaFJ1FPh6WvmnaksPsjHLvce+O8N+Jk+5bMufDh3LzwvAee7jjzW+SJM8346DxdaAkwmTPqVo/R5xcEBGMr/gz5ZSLMUz2Oc0RSFr5z32ToMvF/w013ybxzP4ywMRWPB [rest of string was truncated]&quot;;'.
         /// </summary>
         public static string Target {
             get {

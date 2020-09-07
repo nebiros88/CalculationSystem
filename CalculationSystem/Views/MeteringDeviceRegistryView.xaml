@@ -47,8 +47,8 @@
 
         <DataGrid Name="deviceRegistryDataGrid" Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" AutoGenerateColumns="False" ColumnWidth="Auto" HorizontalGridLinesBrush="LightGray" VerticalGridLinesBrush="WhiteSmoke">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Width="Auto" Header="Device Id"/>
-                <DataGridTextColumn Binding="{Binding House.Number}" Width="Auto" Header="House Number"/>
+                <DataGridTextColumn Binding="{Binding Readings}" Width="Auto" Header="Readings"/>
+                <DataGridTextColumn Binding="{Binding House.HouseNumber}" Width="Auto" Header="House Number"/>
                 <DataGridTextColumn Binding="{Binding House.Street}" Width="Auto" Header="House Street"/>
                 <DataGridTextColumn Binding="{Binding House.CaseNumber}" Width="Auto" Header="Case Number"/>
             </DataGrid.Columns>

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddMeteringDevice : DbMigration
+    public partial class ADdMeteringDevice : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,7 @@
                 "dbo.MeteringDevices",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Int(nullable: false, identity: false),
                         Readings = c.Double(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

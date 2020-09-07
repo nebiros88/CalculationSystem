@@ -7,13 +7,13 @@ namespace CalculationSystem.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class AddMeteringDevice : IMigrationMetadata
+    public sealed partial class ADdMeteringDevice : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddMeteringDevice));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ADdMeteringDevice));
         
         string IMigrationMetadata.Id
         {
-            get { return "202009061939193_AddMeteringDevice"; }
+            get { return "202009071629174_ADdMeteringDevice"; }
         }
         
         string IMigrationMetadata.Source

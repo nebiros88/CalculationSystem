@@ -84,14 +84,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>202009031935445_AddPeriods.resx</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009061939193_AddMeteringDevice.cs" />
-    <Compile Include="Migrations\202009061939193_AddMeteringDevice.designer.cs">
-      <DependentUpon>202009061939193_AddMeteringDevice.cs</DependentUpon>
+    <Compile Include="Migrations\202009071629174_ADdMeteringDevice.cs" />
+    <Compile Include="Migrations\202009071629174_ADdMeteringDevice.designer.cs">
+      <DependentUpon>202009071629174_ADdMeteringDevice.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009061939193_AddMeteringDevice1.Designer.cs">
+    <Compile Include="Migrations\202009071629174_ADdMeteringDevice1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>202009061939193_AddMeteringDevice.resx</DependentUpon>
+      <DependentUpon>202009071629174_ADdMeteringDevice.resx</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\HousingRegistryViewModel.cs" />
@@ -108,6 +108,9 @@
     </Compile>
     <Compile Include="Windows\AccountServicesWindow.xaml.cs">
       <DependentUpon>AccountServicesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddMeteringDeviceWindow.xaml.cs">
+      <DependentUpon>AddMeteringDeviceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AddAccountWindow.xaml.cs">
       <DependentUpon>AddAccountWindow.xaml</DependentUpon>
@@ -157,6 +160,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\AddMeteringDeviceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\AddAccountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,10 +211,10 @@
       <DependentUpon>202009031935445_AddPeriods.cs</DependentUpon>
       <LastGenOutput>202009031935445_AddPeriods1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009061939193_AddMeteringDevice.resx">
+    <EmbeddedResource Include="Migrations\202009071629174_ADdMeteringDevice.resx">
       <Generator>ResXFileCodeGeneratorEx</Generator>
-      <DependentUpon>202009061939193_AddMeteringDevice.cs</DependentUpon>
-      <LastGenOutput>202009061939193_AddMeteringDevice1.Designer.cs</LastGenOutput>
+      <DependentUpon>202009071629174_ADdMeteringDevice.cs</DependentUpon>
+      <LastGenOutput>202009071629174_ADdMeteringDevice1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -223,9 +230,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\MainWindowTheme.jpg" />
   </ItemGroup>

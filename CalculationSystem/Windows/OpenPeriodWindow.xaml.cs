@@ -47,7 +47,7 @@ namespace CalculationSystem.Windows
             Period lastOpenedPeriod = GetLastOpenedPeriod();
             int month = lastOpenedPeriod == null ? 1 : lastOpenedPeriod.Month;
 
-            var months = from value in Enumerable.Range(month, 12)
+            var months = from value in Enumerable.Range(month + 1, 12 - month)
                          let name = DateTimeFormatInfo.CurrentInfo.GetMonthName(value)
                          select new { value, name };
 

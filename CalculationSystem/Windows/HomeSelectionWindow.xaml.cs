@@ -21,7 +21,7 @@ namespace CalculationSystem.Windows
     /// </summary>
     public partial class HomeSelectionWindow : Window
     {
-       
+        public House SelectedHouse { get; set; }
 
         public HomeSelectionWindow()
         {
@@ -44,7 +44,7 @@ namespace CalculationSystem.Windows
         {
             if (homeSelectionDataGrid.SelectedIndex > -1)
             {
-                AddAccountWindow.selectedHouse = homeSelectionDataGrid.SelectedItem as House;
+                SelectedHouse = homeSelectionDataGrid.SelectedItem as House;
                 DialogResult = true;
             }
             else
