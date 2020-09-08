@@ -28,6 +28,8 @@ namespace CalculationSystem.Db
 
         public DbSet<MeteringDevice> MeteringDevices { get; set; }
 
+        public DbSet<InitialHouseDeviceReadingInPeriod> InitialHouseDeviceReadings { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<House>()

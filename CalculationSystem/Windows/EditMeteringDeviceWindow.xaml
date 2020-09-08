@@ -1,0 +1,30 @@
+﻿<Window x:Class="CalculationSystem.Windows.EditMeteringDeviceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculationSystem.Windows"
+        mc:Ignorable="d"
+        Title="Edit Group Metering Device" Height="500" Width="400">
+    <Grid Background="LightGray">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Edit device readings for current period" Padding="5">
+            <StackPanel Orientation="Vertical">
+                <DockPanel>
+                    <TextBlock Text="Readings" DockPanel.Dock="Left" Width="Auto" TextAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBox Name="tbReadings" DockPanel.Dock="Right" Width="300" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                </DockPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Height="25" HorizontalAlignment="Center">
+            <Button Content="Ok" Margin="10,0" Width="80" Click="EditOk_Clicked" Height="25" VerticalAlignment="Top"/>
+            <Button Content="Cancel" Margin="10,0" Width="80" Click="EditCancel_Clicked"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

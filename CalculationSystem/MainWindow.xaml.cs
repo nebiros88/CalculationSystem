@@ -24,7 +24,7 @@ namespace CalculationSystem
 
         private void PersonalAccounts_Clicked(object sender, RoutedEventArgs e)
         {
-            DataContext = new PersonalAccountsViewModel();
+            DataContext = new PersonalAccountsViewModel(OpenedPeriod);
         }
 
         private void HousingRegistry_Clicked(object sender, RoutedEventArgs e)
@@ -98,7 +98,7 @@ namespace CalculationSystem
 
         private void DeviceRegistry_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new MeteringDeviceRegistryViewModel();
+            DataContext = new MeteringDeviceRegistryViewModel(OpenedPeriod);
         }
 
         private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

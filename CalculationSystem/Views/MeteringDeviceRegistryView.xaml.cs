@@ -1,5 +1,6 @@
 ﻿using CalculationSystem.Db;
 using CalculationSystem.Entities;
+using CalculationSystem.ViewModels;
 using CalculationSystem.Windows;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,8 @@ namespace CalculationSystem.Views
 
             if (result.HasValue && result.Value)
             {
-                CreateDevice(addWindow.InitialReadings, addWindow.SelectedHouse);
+                MeteringDevice createdDevice = CreateDevice(addWindow.InitialReadings, addWindow.SelectedHouse);
+                devices.Add(createdDevice);
             }
             else
             {
@@ -56,17 +58,20 @@ namespace CalculationSystem.Views
             }
         }
 
-        private void CreateDevice(double initialReadings, House house)
+        private MeteringDevice CreateDevice(double initialReadings, House house)
         {
             using (var dbContext = new CalculationSystemDbContext())
             {
-                dbContext.MeteringDevices.Add(new MeteringDevice
+                var device = new MeteringDevice
                 {
-                    House = house,
+                    Id = house.Id,
                     Readings = initialReadings
-                });
-
+                };
+                
+                dbContext.MeteringDevices.Add(device);
                 dbContext.SaveChanges();
+
+                return dbContext.MeteringDevices.Include("House").Single(d => d.Id == house.Id);
             }
         }
 
@@ -96,53 +101,56 @@ namespace CalculationSystem.Views
             }
         }
 
+        private MeteringDevice UpdateDevice(int deviceId, double readings)
+        {
+            using (var dbContext = new CalculationSystemDbContext())
+            {
+                MeteringDevice device = dbContext.MeteringDevices.Single(d => d.Id == deviceId);
+                SaveInitialReadingForCurrentPeriod(dbContext, device.Id, device.Readings);
+                device.Readings = readings;
+                dbContext.SaveChanges();
+                return dbContext.MeteringDevices.Include("House").Single(d => d.Id == deviceId);
+            }
+        }
+
+        private void SaveInitialReadingForCurrentPeriod(CalculationSystemDbContext dbContext, int houseId, double readings)
+        {
+            Period currentPeriod = (DataContext as MeteringDeviceRegistryViewModel).OpenedPeriod;
+
+            InitialHouseDeviceReadingInPeriod periodDataForHouse = dbContext
+                .InitialHouseDeviceReadings
+                .SingleOrDefault(r => r.PeriodId == currentPeriod.Id && r.HouseId == houseId);
+
+            if (periodDataForHouse == null)
+            {
+                dbContext.InitialHouseDeviceReadings.Add(new InitialHouseDeviceReadingInPeriod
+                {
+                    PeriodId = currentPeriod.Id,
+                    HouseId = houseId,
+                    Readings = readings
+                });
+            }
+        }
+
         private void EditDevice_Clicked(object sender, RoutedEventArgs e)
         {
-            //if (housingRegistryDataGrid.SelectedIndex > -1)
-            //{
-            //    EditHouseWindow editWindow = new EditHouseWindow();
-            //    House editableHouse = housingRegistryDataGrid.SelectedItem as House;
-            //    editWindow.cbCity.Text = editableHouse.City;
-            //    editWindow.cbStreet.Text = editableHouse.Street;
-            //    editWindow.tbHouseNumber.Text = editableHouse.HouseNumber.ToString();
-            //    editWindow.tbCaseNumber.Text = editableHouse.CaseNumber.ToString();
-            //    editWindow.tbHeatingStandart.Text = editableHouse.HeatingStandart.ToString();
-            //    var result = editWindow.ShowDialog();
-            //    if (result == false)
-            //    {
-            //        editWindow.Close();
-            //    }
-            //    else
-            //    {
-            //        try
-            //        {
-            //            using (var dbContext = new CalculationSystemDbContext())
-            //            {
-            //                House house = dbContext.Houses.Single(x => x.Id == editableHouse.Id);
-            //                house.City = editWindow.cbCity.SelectedItem.ToString();
-            //                house.Street = editWindow.cbStreet.SelectedItem.ToString();
-            //                house.HouseNumber = int.Parse(editWindow.tbHouseNumber.Text);
-            //                house.HeatingStandart = double.Parse(editWindow.tbHeatingStandart.Text);
-            //                if (!String.IsNullOrEmpty(editWindow.tbCaseNumber.Text))
-            //                {
-            //                    house.CaseNumber = editWindow.tbCaseNumber.Text[0];
-            //                }
-            //                else
-            //                {
-            //                    house.CaseNumber = null;
-            //                }
-            //                dbContext.SaveChanges();
-            //                UpdateOrRefresh();
-            //                MessageBox.Show("House edited");
-            //            }
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            MessageBox.Show($"Impossible! Reason: -{ex.Message}");
-            //        }
-            //    }
+            if (deviceRegistryDataGrid.SelectedIndex > -1)
+            {
+                int deviceId = (deviceRegistryDataGrid.SelectedItem as MeteringDevice).Id;
+                var editWindow = new EditMeteringDeviceWindow();
+                bool? result = editWindow.ShowDialog();
 
-            //}
+                if (result.HasValue && result.Value)
+                {
+                    devices.Remove(deviceRegistryDataGrid.SelectedItem as MeteringDevice);
+                    var updatedDevice = UpdateDevice(deviceId, editWindow.Readings);
+                    devices.Add(updatedDevice);
+                }
+                else
+                {
+                    editWindow.Close();
+                }
+            }
         }
     }
 }

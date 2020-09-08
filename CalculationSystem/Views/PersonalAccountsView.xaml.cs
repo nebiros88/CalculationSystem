@@ -1,5 +1,6 @@
 ﻿using CalculationSystem.Db;
 using CalculationSystem.Entities;
+using CalculationSystem.ViewModels;
 using CalculationSystem.Windows;
 using System;
 using System.Collections.Generic;
@@ -220,10 +221,12 @@ namespace CalculationSystem.Views
 
         private void btGoToAccount_Clicked(object sender, RoutedEventArgs e)
         {
+            Period currentPeriod = (DataContext as PersonalAccountsViewModel).OpenedPeriod;
+
             if (AccountsGrid.SelectedIndex > -1)
             {
                 Account account = AccountsGrid.SelectedItem as Account;
-                AccountServicesWindow accountServicesWindow = new AccountServicesWindow(account);
+                AccountServicesWindow accountServicesWindow = new AccountServicesWindow(account, currentPeriod);
 
                 var result = accountServicesWindow.ShowDialog();
 

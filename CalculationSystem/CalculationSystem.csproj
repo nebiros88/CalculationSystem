@@ -67,6 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="Entities\Calculation.cs" />
     <Compile Include="Entities\House.cs" />
+    <Compile Include="Entities\InitialHouseDeviceReadingInPeriod.cs" />
     <Compile Include="Entities\MeteringDevice.cs" />
     <Compile Include="Entities\Period.cs" />
     <Compile Include="Entities\Price.cs" />
@@ -93,6 +94,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>202009071629174_ADdMeteringDevice.resx</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009081616178_InitialReadingForGroupDeviceInPeriod.cs" />
+    <Compile Include="Migrations\202009081616178_InitialReadingForGroupDeviceInPeriod.designer.cs">
+      <DependentUpon>202009081616178_InitialReadingForGroupDeviceInPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009081616178_InitialReadingForGroupDeviceInPeriod1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>202009081616178_InitialReadingForGroupDeviceInPeriod.resx</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ViewModels\HousingRegistryViewModel.cs" />
     <Compile Include="ViewModels\MeteringDeviceRegistryViewModel.cs" />
@@ -114,6 +124,9 @@
     </Compile>
     <Compile Include="Windows\AddAccountWindow.xaml.cs">
       <DependentUpon>AddAccountWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditMeteringDeviceWindow.xaml.cs">
+      <DependentUpon>EditMeteringDeviceWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\EditAccountWindow.xaml.cs">
       <DependentUpon>EditAccountWindow.xaml</DependentUpon>
@@ -168,6 +181,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\EditMeteringDeviceWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Windows\EditAccountWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -215,6 +232,11 @@
       <Generator>ResXFileCodeGeneratorEx</Generator>
       <DependentUpon>202009071629174_ADdMeteringDevice.cs</DependentUpon>
       <LastGenOutput>202009071629174_ADdMeteringDevice1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009081616178_InitialReadingForGroupDeviceInPeriod.resx">
+      <Generator>ResXFileCodeGeneratorEx</Generator>
+      <DependentUpon>202009081616178_InitialReadingForGroupDeviceInPeriod.cs</DependentUpon>
+      <LastGenOutput>202009081616178_InitialReadingForGroupDeviceInPeriod1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

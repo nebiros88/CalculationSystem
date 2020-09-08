@@ -1,4 +1,5 @@
 ﻿using CalculationSystem.Db;
+using CalculationSystem.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,11 @@ namespace CalculationSystem.ViewModels
 {
     public class PersonalAccountsViewModel
     {
-       
+        public Period OpenedPeriod { get; private set; }
+
+        public PersonalAccountsViewModel(Period openedPeriod)
+        {
+            OpenedPeriod = openedPeriod;
+        }
     }
 }

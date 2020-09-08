@@ -24,9 +24,11 @@ namespace CalculationSystem.Windows
     public partial class AccountServicesWindow : Window
     {
         public ObservableCollection<Calculation> Calculations { get; set; }
-        private Account account;
 
-        public AccountServicesWindow(Account account)
+        private readonly Account account;
+        private readonly Period currentPeriod;
+
+        public AccountServicesWindow(Account account, Period currentPeriod)
         {
             InitializeComponent();
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -46,6 +48,7 @@ namespace CalculationSystem.Windows
             }));
 
             accountServicesDataGrid.ItemsSource = Calculations.ToList();
+            this.currentPeriod = currentPeriod;
         }
 
         private void Close_Clicked(object sender, RoutedEventArgs e)
@@ -55,10 +58,47 @@ namespace CalculationSystem.Windows
 
         private void btCalculate_Clicked(object sender, RoutedEventArgs e)
         {
-            foreach (var c in Calculations)
+            using (var db = new CalculationSystemDbContext())
             {
-                c.ServiceQuantity = account.House.HeatingStandart * account.LivingSpace;
-                c.Total = c.ServiceQuantity * c.ServiceRate;
+                Account currAccount = db.Accounts
+                    .Include("House")
+                    .Single(a => a.Id == account.Id);
+
+                foreach (var c in Calculations)
+                {
+                    c.ServiceQuantity = GetStandard(currAccount) * account.LivingSpace;
+                    c.Total = c.ServiceQuantity * c.ServiceRate;
+                }
+            }   
+        }
+
+        private double GetStandard(Account currAccount)
+        {
+            if (currAccount.House.GroupMeteringDevice == null)
+            {
+                return currAccount.House.HeatingStandart;
+            }
+            else
+            {
+                return (currAccount.House.GroupMeteringDevice.Readings - GetInitialReadings(currAccount)) / currAccount.House.TotalSpace;
+            }
+        }
+
+        private double GetInitialReadings(Account currAccount)
+        {
+            using (var db = new CalculationSystemDbContext())
+            {
+                var initialReadings = db.InitialHouseDeviceReadings
+                    .SingleOrDefault(r => r.PeriodId == currentPeriod.Id && r.HouseId == currAccount.HouseId);
+
+                if (initialReadings == null)
+                {
+                    return currAccount.House.GroupMeteringDevice.Readings;
+                }
+                else
+                {
+                    return initialReadings.Readings;
+                }
             }
         }
     }

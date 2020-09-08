@@ -23,6 +23,14 @@ namespace CalculationSystem.Entities
 
         public virtual MeteringDevice GroupMeteringDevice { get; set; }
 
+        public double TotalSpace
+        {
+            get
+            {
+                return Accounts.Sum(a => a.LivingSpace);
+            }
+        }
+
         public House()
         {
             Accounts = new List<Account>();
