@@ -65,6 +65,7 @@ namespace CalculationSystem.Windows
             }
             else
             {
+                selectedHouse = selectHomeWindow.SelectedHouse;
                 tbSelectedHome.Text = selectedHouse.Id + "." + selectedHouse.City + " str." + selectedHouse.Street + ". " + selectedHouse.HouseNumber + " case -" + selectedHouse.CaseNumber;
             }
         }
