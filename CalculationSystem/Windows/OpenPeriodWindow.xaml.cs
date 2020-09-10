@@ -45,7 +45,7 @@ namespace CalculationSystem.Windows
         private IDictionary<int, string> GetEligibleToProcessPeriods()
         {
             Period lastOpenedPeriod = GetLastOpenedPeriod();
-            int month = lastOpenedPeriod == null ? 1 : lastOpenedPeriod.Month;
+            int month = lastOpenedPeriod == null ? 0 : lastOpenedPeriod.Month;
 
             var months = from value in Enumerable.Range(month + 1, 12 - month)
                          let name = DateTimeFormatInfo.CurrentInfo.GetMonthName(value)

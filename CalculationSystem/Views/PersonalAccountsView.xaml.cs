@@ -111,7 +111,7 @@ namespace CalculationSystem.Views
             AddAccountWindow newAccountWindow = new AddAccountWindow();
             var dialogResult = newAccountWindow.ShowDialog();
 
-            if (!dialogResult.HasValue || dialogResult.Value)
+            if (!dialogResult.HasValue || !dialogResult.Value)
             {
                 newAccountWindow.Close();
             }

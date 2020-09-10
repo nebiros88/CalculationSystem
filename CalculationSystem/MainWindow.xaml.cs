@@ -125,5 +125,10 @@ namespace CalculationSystem
             var hasPeriodBeenOpened = openPeriodWindow.ShowDialog();
             ProcessPeriod(hasPeriodBeenOpened, openPeriodWindow.OpenedPeriod);
         }
+
+        private void Reports_Click(object sender, RoutedEventArgs e)
+        {
+            DataContext = new ReportsViewModel();
+        }
     }
 }

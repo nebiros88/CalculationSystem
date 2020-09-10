@@ -68,8 +68,25 @@ namespace CalculationSystem.Windows
                 {
                     c.ServiceQuantity = GetStandard(currAccount) * account.LivingSpace;
                     c.Total = c.ServiceQuantity * c.ServiceRate;
+                    SaveAccrual(account.Id, c, db);
                 }
+
+                db.SaveChanges();
             }   
+        }
+
+        private void SaveAccrual(int accountId, Calculation calculation, CalculationSystemDbContext db)
+        {
+            var accrual = db.Accruals.SingleOrDefault(a => a.PeriodId == currentPeriod.Id && a.AccountId == accountId);
+
+            if (accrual == null)
+            {
+                db.Accruals.Add(new Accrual { AccountId = accountId, PeriodId = currentPeriod.Id, Value = calculation.Total.Value });
+            }
+            else
+            {
+                accrual.Value = calculation.Total.Value;
+            }
         }
 
         private double GetStandard(Account currAccount)

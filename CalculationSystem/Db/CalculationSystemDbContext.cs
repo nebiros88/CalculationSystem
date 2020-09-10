@@ -30,6 +30,8 @@ namespace CalculationSystem.Db
 
         public DbSet<InitialHouseDeviceReadingInPeriod> InitialHouseDeviceReadings { get; set; }
 
+        public DbSet<Accrual> Accruals { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<House>()

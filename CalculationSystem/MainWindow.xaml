@@ -17,6 +17,9 @@
         <DataTemplate x:Name="deviceRegistryViewTemplate" DataType="{x:Type viewmodels:MeteringDeviceRegistryViewModel}">
             <views:MeteringDeviceRegistryView DataContext="{Binding}"/>
         </DataTemplate>
+        <DataTemplate x:Name="reportsViewTemplate" DataType="{x:Type viewmodels:ReportsViewModel}">
+            <views:ReportsView DataContext="{Binding}"/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -55,6 +58,8 @@
             <MenuItem Header="Metering devices">
                 <MenuItem Header="Devices registry" Click="DeviceRegistry_Click">
                 </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Reports" Click="Reports_Click">
             </MenuItem>
         </Menu>
         <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" Stretch="Fill" Source="C:\Users\Korbut\Documents\BSUIR\Корбут\СВПП_Курсовая_Корбут_80331\CalculationSystem\CalculationSystem\Images\MainWindowTheme2.jpg">
