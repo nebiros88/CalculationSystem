@@ -62,7 +62,7 @@
             <MenuItem Header="Reports" Click="Reports_Click">
             </MenuItem>
         </Menu>
-        <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" Stretch="Fill" Source="C:\Users\Korbut\Documents\BSUIR\Корбут\СВПП_Курсовая_Корбут_80331\CalculationSystem\CalculationSystem\Images\MainWindowTheme2.jpg">
+        <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" Stretch="Fill" Source="C:\Users\Korbut\Desktop\Diploma\Diploma\CalculationSystem_DP\CalculationSystem\CalculationSystem\Images\MainWindowTheme2.jpg">
         </Image>
         <ContentControl Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" Content="{Binding}" />
         <StatusBar Name="CurrentPeriodManagementBar" HorizontalAlignment="Left" Height="45" Margin="0,51,0,-0.5" Grid.Row="6" VerticalAlignment="Top" Width="1195" Grid.ColumnSpan="6" Visibility="Hidden">

@@ -86,7 +86,7 @@ namespace CalculationSystem.Views
                 var header = new PdfPageTemplateElement(bounds);
                 doc.Template.Top = header;
 
-                PdfFont subHeadingFont = new PdfStandardFont(PdfFontFamily.TimesRoman, 14, PdfFontStyle.Bold);
+                PdfFont subHeadingFont = new PdfTrueTypeFont(new Font("Microsoft Sans Serif", 14), 14, true);
                 PdfTextElement element = new PdfTextElement($"ACCRUALS FOR {period.Name}", subHeadingFont);
 
                 PdfLayoutResult result = element.Draw(page, new PointF(page.GetClientSize().Width / 2, bounds.Top + 8));

@@ -38,8 +38,8 @@ namespace CalculationSystem.Entities
         public static Service DefaultService = new Service
         {
             Name = "Отопление",
-            Units = "rand",
-            Prices = new List<Price> { new Price { Rate = .5 }  }
+            Units = "Гкал",
+            Prices = new List<Price> { new Price { Rate = 18.5 }  }
         };
     }
 }

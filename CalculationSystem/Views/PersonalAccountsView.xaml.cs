@@ -159,7 +159,7 @@ namespace CalculationSystem.Views
                             Account delAccount = AccountsGrid.SelectedItem as Account;
                             dbContext.Accounts.Remove(dbContext.Accounts.Single(h => h.Id == delAccount.Id));
                             dbContext.SaveChanges();
-                            MessageBox.Show("Selected house was deleted!");
+                            MessageBox.Show("Selected account was deleted!");
                         }
                     }
                     catch (Exception ex)
