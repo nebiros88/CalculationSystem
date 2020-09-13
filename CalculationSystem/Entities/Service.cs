@@ -35,11 +35,14 @@ namespace CalculationSystem.Entities
 
         public virtual ICollection<Account> Accounts { get; set; }
 
-        public static Service DefaultService = new Service
+        public static Service DefaultService()
         {
-            Name = "Отопление",
-            Units = "Гкал",
-            Prices = new List<Price> { new Price { Rate = 18.5 }  }
-        };
+            return new Service
+            {
+                Name = "Отопление",
+                Units = "Гкал",
+                Prices = new List<Price> { new Price { Rate = 18.5 } }
+            };
+        }
     }
 }

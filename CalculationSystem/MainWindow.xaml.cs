@@ -66,11 +66,15 @@ namespace CalculationSystem
                 OpenedPeriod = period;
                 UpdatePeriodStatusInWindow(period);
             }
+            AccountsLink.IsEnabled = ThereIsOpenedPeriod();
+            HousingStockLink.IsEnabled = ThereIsOpenedPeriod();
+            MeteringDevicesLink.IsEnabled = ThereIsOpenedPeriod();
         }
 
         private void UpdatePeriodStatusInWindow(Period period)
         {
             CurrentPeriodManagementBar.Visibility = Visibility.Visible;
+            OpenPeriodManagementBar.Visibility = Visibility.Hidden;
             OpenedPeriodTextValue.Text = $"{DateTimeFormatInfo.CurrentInfo.GetMonthName(period.Month)} {period.Year}";
         }
 
@@ -104,8 +108,15 @@ namespace CalculationSystem
         private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             ClosePeriod();
+            OpenedPeriod = null;
             CurrentPeriodManagementBar.Visibility = Visibility.Hidden;
+            OpenPeriodManagementBar.Visibility = Visibility.Visible;
             DataContext = null;
+            SuggestOpeningPeriod();
+        }
+
+        private void OpenPeriodText_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
             SuggestOpeningPeriod();
         }
 

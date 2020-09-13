@@ -47,15 +47,14 @@
                 <Separator></Separator>
                 <MenuItem Header="Exit" Click="Exit_Clicked" ></MenuItem>
             </MenuItem>
-            <MenuItem Header="Accounts">
+            <MenuItem Header="Accounts" Name="AccountsLink">
                 <MenuItem Header="Personal accounts" Click="PersonalAccounts_Clicked" >
-
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Housing stock" >
+            <MenuItem Header="Housing stock" Name="HousingStockLink">
                 <MenuItem Header="Housing registry" Click="HousingRegistry_Clicked" ></MenuItem>
             </MenuItem>
-            <MenuItem Header="Metering devices">
+            <MenuItem Header="Metering devices" Name="MeteringDevicesLink">
                 <MenuItem Header="Devices registry" Click="DeviceRegistry_Click">
                 </MenuItem>
             </MenuItem>
@@ -65,8 +64,11 @@
         <Image Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" Stretch="Fill" Source="C:\Users\Korbut\Desktop\Diploma\Diploma\CalculationSystem_DP\CalculationSystem\CalculationSystem\Images\MainWindowTheme2.jpg">
         </Image>
         <ContentControl Grid.Row="1" Grid.RowSpan="6" Grid.Column="0" Grid.ColumnSpan="6" Content="{Binding}" />
-        <StatusBar Name="CurrentPeriodManagementBar" HorizontalAlignment="Left" Height="45" Margin="0,51,0,-0.5" Grid.Row="6" VerticalAlignment="Top" Width="1195" Grid.ColumnSpan="6" Visibility="Hidden">
-            <StackPanel>
+        <StatusBar  HorizontalAlignment="Left" Height="45" Margin="0,51,0,-0.5" Grid.Row="6" VerticalAlignment="Top" Width="1195" Grid.ColumnSpan="6">
+            <StackPanel Name="OpenPeriodManagementBar">
+                <TextBlock TextWrapping="Wrap" TextDecorations="Underline" FontStyle="Italic" Cursor="Hand" MouseLeftButtonUp="OpenPeriodText_MouseLeftButtonUp">Open Period</TextBlock>
+            </StackPanel>
+            <StackPanel Name="CurrentPeriodManagementBar" Visibility="Hidden">
                 <TextBlock Name="OpenedPeriodText" TextWrapping="Wrap"><Bold>Opened Period</Bold>: <Run Name="OpenedPeriodTextValue"></Run></TextBlock>
                 <TextBlock TextWrapping="Wrap" TextDecorations="Underline" FontStyle="Italic" Cursor="Hand" MouseLeftButtonUp="TextBlock_MouseLeftButtonUp">Click to close it</TextBlock>
             </StackPanel>

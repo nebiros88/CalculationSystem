@@ -137,7 +137,7 @@ namespace CalculationSystem.Views
                     LivingSpace = double.Parse(space),
                     HouseId = houseId,
                     ApartmentNumber = int.Parse(aptNumber),
-                    Services = new List<Service> { Service.DefaultService }
+                    Services = new List<Service> { Service.DefaultService() }
                 };
 
                 dbContext.Accounts.Add(newAccount);

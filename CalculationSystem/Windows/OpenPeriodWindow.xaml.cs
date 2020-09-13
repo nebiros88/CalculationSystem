@@ -29,7 +29,7 @@ namespace CalculationSystem.Windows
 
         public int OpenedPeriod { get; private set; }
 
-        private void ListBox_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Center();
             PeriodsListBox.ItemsSource = GetEligibleToProcessPeriods();
